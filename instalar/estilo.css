@@ -1,0 +1,136 @@
+body,
+.auth .auth-filter-blur {
+    background-image: none;
+}
+.auth {
+    display: block;
+}
+header {
+    background-color: #353535;
+    padding: 10px 3em;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 160px;
+}
+header a img {
+    position: absolute;
+    left: 3em;
+    top: 10px;
+    width: 20%;
+    display: block;
+    margin: 0 auto;
+}
+header ul {
+    list-style: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    float: right;
+}
+header ul li {
+    display: inline-block;
+    padding: 10px;
+    font-weight: 600;
+    color: #888;
+    float: left;
+}
+header ul li.ok {
+    color: #F4F4F4;
+}
+.auth-box  {
+    margin: 100px auto 0 auto!important;
+    width: 90%;
+    color: #363940;
+    background-color: #FFFFFF;
+    border: 1px solid #35353588;
+    box-shadow: none;
+}
+.auth-box .auth-content .auth-login-cuerpo {
+    color: #363940;
+    position: relative;
+}
+.auth-login-cuerpo form {
+    padding: 10px 20px;
+}
+.auth-login-cuerpo h3.step_num {
+    position: absolute;
+    right: 18px;
+    top: 25px;
+    background-color: #363940;
+    color: #EEE;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10em;
+}
+form fieldset legend {
+    font-size: 32px;
+}
+form.datosbase fieldset legend {
+    display: block;
+    padding: 10px;
+}
+form.datosbase fieldset dl {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+}
+form.datosbase fieldset dl dt label span {
+    font-weight: 200;
+    display: block;
+    font-size: 14px;
+}
+form.datosbase fieldset dl dd {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -o-flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    -ms-align-items: center;
+    align-items: center;
+}
+#footer {
+    text-align: center;
+    padding: 10px 0;
+    display: block;
+    margin-top: -20px;
+    font-weight: 500;
+}
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border: 0px none #ffffff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #555;
+}
+::-webkit-scrollbar-track {
+  background: #444;
+  border: 0px none #ffffff;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666;
+}
+::-webkit-scrollbar-track:active {
+  background: #222;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

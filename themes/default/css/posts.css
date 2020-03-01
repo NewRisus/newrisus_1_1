@@ -1,0 +1,31 @@
+.wysibbClass {
+	line-height: 1.9em;
+	font-size: 1.5em;
+}
+.wysibbClass ol,
+.wysibbClass ul {
+	padding: 0 0 0 5%;
+	margin: 0;
+}
+.wysibbClass ol li {
+	padding: 2px;
+	list-style-type: decimal!important;
+	list-style: decimal!important;
+}
+.wysibbClass ul li {
+	padding: 2px;
+	list-style-type: disc!important;
+	list-style: disc!important;
+}
+.wysibbClass .code {
+	color: #EEE;
+	background:#1d1f20;
+	font-family:monospace;
+	border:0!important;
+	line-height: 1em;
+}
+.nr-comentario .row .wysibbClass img[align="absmiddle"] {
+	width: 16px!important;
+	height: 16px!important;
+	display: inline-block;
+}

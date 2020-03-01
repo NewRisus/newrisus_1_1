@@ -1,0 +1,12 @@
+pre {
+	padding: 14px 14px 14px 2%!important;
+    border-radius: 5px;
+    box-shadow: 0px 0px 7px #000 inset;
+}
+.prettyprint{
+	background:#1d1f20;
+	font-family:monospace;
+	border:0!important;
+	line-height: 1em;
+}
+li.L0,li.L1,li.L2,li.L3,li.L4,li.L5,li.L6,li.L7,li.L8,li.L9{padding-left:.2em;}

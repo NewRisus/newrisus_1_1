@@ -1,0 +1,360 @@
+.row .col-sm-8 .content h2 {
+    border-bottom: 1px solid #CCC;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 6px;
+    background-color: #EEE;
+}
+.row .col-sm-8 .content .box {
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.3em;
+    text-align: justify;
+    font-weight: 200;
+}
+.row .col-sm-8 .content .box b {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+/* ADMIN */
+#admin_panel fieldset {
+    border-style: solid;
+    border-width: 1px;
+    margin: 5px 0;
+    padding: 10px;
+    position: relative;
+    font-family: Verdana;
+    color: #536482;
+    clear: both;
+    position: relative;
+}
+#admin_panel legend {
+    color: #115098;
+    font-weight: bold;
+    line-height: 1.2em;
+    margin-top: -0.4em;
+    padding: 1px 0;
+    position: relative;
+    text-transform: none;
+    top: -0.2em;
+    vertical-align: middle;
+}
+#admin_panel fieldset dl {
+    height: 1%;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+#admin_panel fieldset dt {
+    border-color: #CCCCCC;
+    border-style: none solid none none;
+    border-width: medium 1px medium medium;
+    padding-top: 3px;
+    text-align: left;
+    width: 45%;
+    float: left;
+}
+#admin_panel dt label {
+    color: #4A5A73;
+    font-weight: bold;
+    text-align: left;
+    padding: 0 5px 0 0;
+    cursor: pointer;
+}
+#admin_panel dt span {
+    padding: 0 5px 0 0;
+}
+#admin_panel dl:hover dt {border-color:#000}
+#admin_panel dl:hover dt label {color:#000}
+#admin_panel fieldset dd {
+    border-color: #CCCCCC;
+    border-style: none none none solid;
+    border-width: medium medium medium 1px;
+    margin: 0 0 0 45%;
+    padding: 0 0 0 5px;
+    vertical-align: top;
+    color:#666;
+}
+#admin_panel dd input {
+    font-size: 1.2em;
+    width: 100%;
+    padding: 6px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#admin_panel dd label {
+    color: #4A5A73;
+    font-size: 1em;
+    margin: 0 10px 0 0;
+    white-space: nowrap;
+}
+#admin_panel fieldset p {
+    background-color: transparent;
+    border: medium none;
+    margin: 0 0 5px;
+    padding: 5px 0 0;
+    text-align: right;
+}
+#admin_panel fieldset p input{
+    cursor:pointer;
+    float:right;
+}
+#admin_panel input.radio {
+    background-color: transparent;
+    border: medium none;
+    cursor: default;
+    width: auto !important;
+}
+#admin_panel .selectRecaptcha select {
+    border: 1px solid #DDD;
+    width: 60%;
+    padding: 6px;
+    margin: 6px auto;
+}
+#admin_panel .selectRecaptcha span {
+    display: block;
+}
+#admin_panel .selectRecaptcha > div {
+    background-color: #EEE;
+    padding: 10px;
+}
+.new_themes_risus {
+    position: relative;
+    padding: 4px;
+    font-size: 16px;
+    border: 1px solid #CCC;
+    margin: 6px;
+}
+.new_themes_risus .title small {
+    display: block;
+    margin-top: 4px;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+}
+.new_themes_risus .title a {
+    padding: 4px 0;
+    margin-bottom: -10px;
+    display: block;
+}
+.new_themes_risus .body {
+    font-size: 12px;
+    display: block;
+    padding: 4px 2px;
+}
+.new_themes_risus .body span b {
+    margin-left: 10px;
+}
+.accordion {
+}
+.accordion h2 {
+    background-color: #EEE;
+    padding: 6px;
+    font-weight: 300;
+    font-size: 22px;
+    display: block;
+    cursor: pointer;
+}
+.nr-admin-panel {
+    margin-bottom: 10px;
+}
+.nr-admin-panel h6 {
+    border-bottom: 1px solid #CCC;
+    font-weight: 400;
+    padding: 6px 2px;
+    background-color: #EEE;
+}
+.nr-admin-panel ul {
+    padding: 4px 2px;
+}
+.nr-admin-panel ul li {
+    border: 1px solid #CCC;
+    padding: 2px;
+    margin-bottom: 4px;
+}
+.phpostAlfa {
+    border: 1px solid #CCC;
+    background-color: #EEE;
+    color: #999;
+    height: 200px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+fieldset dl {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    margin-bottom: 10px;
+}
+fieldset dl dt {
+    font-weight: 200;
+}
+fieldset dl dt label {
+    font-weight: 400;
+    display: block;
+    margin-bottom: -2px;
+}
+fieldset dl dt span {
+    display: block;
+    line-height: 1.2em;
+    color: #999;
+    padding-right: 8px;
+    font-size: 12px;
+}
+fieldset dl dd .input-group .form-control {
+    border-radius: 5px 0 0 5px;
+    border-right: 0;
+}
+fieldset dl dd .input-group .input-group-addon {
+    border-radius: 0 5px 5px 0;
+    border-left: 0;
+}
+fieldset dl dd .medall input[type="text"],
+fieldset dl dd .medall select {
+    border: 1px solid #CCC;
+    padding: 5px;
+    height: 33px;
+}
+table tbody .admin_actions {
+    display: flex;
+    justify-content: flex-start;
+}
+table tbody .admin_actions a {
+    font-size: 18px;
+    display: block;
+    margin-right: 6px;
+}
+table tbody .admin_actions a i.fa-thumbs-up,
+table tbody .admin_actions a i.fa-plus { color: #3AB011; }
+table tbody .admin_actions a i.fa-edit { color: #1176B0; }
+table tbody .admin_actions a i.fa-ban,
+table tbody .admin_actions a i.fa-power-off,
+table tbody .admin_actions a i.fa-times { color: #D61B3E; }
+table tbody .admin_actions a i.fa-sync { color: #5B12AD; }
+table tbody .admin_actions a i.fa-exclamation-triangle,
+table tbody .admin_actions a i.fa-comment { color: #E09B15; }
+table tbody .admin_actions a i.fa-eye { color: #15E061; }
+table tbody .admin_actions a i.fa-comment-slash,
+table tbody .admin_actions a i.fa-eye-slash { color: #999; }
+.account2 {
+    padding: 10px 8px 18px 8px;
+    background-repeat: no-repeat!important;
+    background-position: center!important;
+    -webkit-background-size: cover!important;
+    background-size: cover!important;
+    display: grid;
+    grid-template-columns: 68px 1fr;
+    gap: 6px;
+}
+.account2 .img-120 {
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+.account2 div .name {
+    padding: 3px 0;
+    margin: 11px 0 2px 0;
+    font-weight: 700;
+}
+.account2 div a {
+    color: #666;
+    display: block;
+    margin-top: -6px;
+    font-size: 14px;
+}
+.au-breadcrumb {
+    padding: 6px 0;
+    height: 100px;
+    width: 100%;
+}
+.au-breadcrumb-content h3 input {
+    position: absolute;
+    right: 10px;
+}
+.au-breadcrumb-content h3 p {
+    font-weight: 200;
+    font-size: 13px;
+    display: block;
+    padding: 4px 0;
+    margin-top: -2px;
+    font-style: italic;
+    color: #999;
+}
+.categoria-foro {
+    width: 60%;
+    margin: 10px auto; 
+    position: relative;
+}
+.categoria-foro small {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+.categoria-foro .categoria-foro-uno {
+    padding: 10px 6px;
+}
+.categoria-foro .categoria-foro-uno .icono-categoria {
+    float: left;
+    width: 50px;
+    height: 50px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,.7);
+    line-height: 48px;
+    text-align: center;
+    border-radius: 10em;
+    color: #FFF;
+    font-size: 1.6em;
+}
+.categoria-foro .categoria-foro-uno .titulo-categoria {
+    display: block;
+    margin-left: 54px;
+}
+.categoria-foro .categoria-foro-uno .titulo-categoria a {
+    display: block;
+    font-weight: 600;
+    color: #444;
+    margin-top: 4px;
+    margin-bottom: -4px;
+}
+.categoria-foro .categoria-foro-uno .titulo-categoria p {
+    font-style: italic;
+    color: #888;
+}
+#tab2 fieldset {
+    margin: 0;
+    padding: 0;
+}
+#tab2 fieldset legend {
+    margin: 0;
+    padding: 6px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    background-color: #EEE;
+    display: block;
+}
+#tab2 fieldset input[type="checkbox"] {
+    float: left;
+    width: 22px;
+    height: 22px;
+    margin: 6px 4px;
+}
+#tab2 fieldset label {
+    display: block;
+    margin-bottom: -6px;
+    margin-left: 22px;
+}
+#tab2 fieldset label:nth-child(2n+2) {
+    color: #888;
+    font-style: italic;
+    font-size: 12px;
+    margin-bottom: 8px;
+}

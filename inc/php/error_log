@@ -1,0 +1,117 @@
+[04-Sep-2019 19:31:11 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; Services_JSON has a deprecated constructor in /home/mundodbc/public_html/demo/inc/ext/JSON.php on line 115
+[04-Sep-2019 19:31:11 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; Services_JSON_Error has a deprecated constructor in /home/mundodbc/public_html/demo/inc/ext/JSON.php on line 781
+[04-Sep-2019 19:31:11 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; Services_JSON_Error has a deprecated constructor in /home/mundodbc/public_html/demo/inc/ext/JSON.php on line 795
+[04-Sep-2019 19:35:44 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; Services_JSON has a deprecated constructor in /home/mundodbc/public_html/demo/inc/ext/JSON.php on line 115
+[04-Sep-2019 19:35:44 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; Services_JSON_Error has a deprecated constructor in /home/mundodbc/public_html/demo/inc/ext/JSON.php on line 781
+[04-Sep-2019 19:35:44 UTC] PHP Deprecated:  Methods with the same name as their class will not be constructors in a future version of PHP; Services_JSON_Error has a deprecated constructor in /home/mundodbc/public_html/demo/inc/ext/JSON.php on line 795
+[09-Sep-2019 04:59:57 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:00:33 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:01:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:01:42 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:02:30 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:03:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/cuenta.php(82): tsCore->setJSON(Array)
+#1 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:03:10 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/cuenta.php(82): tsCore->setJSON(Array)
+#1 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:03:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/cuenta.php(82): tsCore->setJSON(Array)
+#1 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:03:22 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/cuenta.php(82): tsCore->setJSON(Array)
+#1 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[09-Sep-2019 05:03:36 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[15-Sep-2019 18:36:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/cuenta.php(82): tsCore->setJSON(true)
+#1 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[17-Sep-2019 07:24:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[17-Sep-2019 07:30:40 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[17-Sep-2019 07:31:03 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[17-Sep-2019 07:31:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[17-Sep-2019 07:31:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[17-Sep-2019 07:32:32 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[17-Sep-2019 07:33:41 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[17-Sep-2019 07:36:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function encode() on null in /home/mundodbc/public_html/demo/inc/class/c.core.php:192
+Stack trace:
+#0 /home/mundodbc/public_html/demo/inc/php/ajax/ajax.upload.php(55): tsCore->setJSON(Array)
+#1 /home/mundodbc/public_html/demo/inc/php/ajax_files.php(49): include('/home/mundodbc/...')
+#2 {main}
+  thrown in /home/mundodbc/public_html/demo/inc/class/c.core.php on line 192
+[19-Sep-2019 04:37:14 UTC] PHP Fatal error:  Uncaught  --> Smarty Compiler: Syntax error in template "file:/home/mundodbc/public_html/demo/themes/default/templates/sections/main_header.tpl"  on line 86 "<div class="container{if $tsPage == 'perfil'}-fluid{elseif $tsPage == 'chat}-fluid{/if}" {if $tsPage == 'perfil'}style="padding-top:0rem !important;{else}style="padding-top:1rem !important;{/if}">"  - Unexpected "perfil", expected one of: "}" <-- 
+  thrown in /home/mundodbc/public_html/demo/inc/smarty/sysplugins/smarty_internal_templatecompilerbase.php on line 86

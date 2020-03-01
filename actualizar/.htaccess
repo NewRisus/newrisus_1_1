@@ -1,0 +1,2 @@
+## Este archivo sirve para no ingresar el index.php en la URL para entrar al directorio.
+RewriteEngine on
