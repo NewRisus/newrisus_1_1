@@ -1,5 +1,5 @@
 <?php 
-define('VersionTheme', '1.0');
+define('VersionTheme', '1.1');
 
 /* FORZAMOS EL IDIOMA ESPAÑOL */
 setlocale(LC_ALL, "es_ES");
