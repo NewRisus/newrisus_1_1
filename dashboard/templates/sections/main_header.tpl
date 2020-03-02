@@ -58,9 +58,9 @@
 <div id="brandday">
    <div class="page-wrapper">
       <div class="page-container2">
-         {include file='sections/header-desktop.tpl'}
-         {include file='sections/navbar_list.tpl'}
-         {include file='sections/breadcrumb.tpl'}
+         {include file='templates/sections/header-desktop.tpl'}
+         {include file='templates/sections/navbar_list.tpl'}
+         {include file='templates/sections/breadcrumb.tpl'}
             <section class="mt-3">
                <div class="section__content section__content--p30">
                   <div class="container-fluid bg-white border border-light p-2">

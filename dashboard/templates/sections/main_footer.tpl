@@ -19,13 +19,13 @@
    </div>
 </div>
 
-<script src="{$tsConfig.url}/dashboard/js/popper.min.js"></script>
-<script src="{$tsConfig.url}/dashboard/js/bootstrap.min.js"></script>
-<script src="{$tsConfig.url}/dashboard/vendor/slick/slick.min.js">
+<script src="{$tsConfig.url}/dashboard/js/popper.min.js?t={$smarty.now}"></script>
+<script src="{$tsConfig.url}/dashboard/js/bootstrap.min.js?t={$smarty.now}"></script>
+<script src="{$tsConfig.url}/dashboard/vendor/slick/slick.min.js?t={$smarty.now}">
 </script>
-<script src="{$tsConfig.url}/dashboard/vendor/wow/wow.min.js"></script>
-<script src="{$tsConfig.url}/dashboard/vendor/animsition/animsition.min.js"></script>
-<script src="{$tsConfig.url}/dashboard/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-<script src="{$tsConfig.url}/dashboard/js/main.js"></script>
+<script src="{$tsConfig.url}/dashboard/vendor/wow/wow.min.js?t={$smarty.now}"></script>
+<script src="{$tsConfig.url}/dashboard/vendor/animsition/animsition.min.js?t={$smarty.now}"></script>
+<script src="{$tsConfig.url}/dashboard/vendor/perfect-scrollbar/perfect-scrollbar.js?t={$smarty.now}"></script>
+<script src="{$tsConfig.url}/dashboard/js/main.js?t={$smarty.now}"></script>
 </body>
 </html>

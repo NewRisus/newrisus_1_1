@@ -45,4 +45,4 @@
       {/if}
    </div>
 </div>
-{include file='sections/main_footer.tpl'}
+{include file='templates/sections/main_footer.tpl'}

@@ -1,4 +1,4 @@
-{include file='sections/main_header.tpl'}
+{include file='templates/sections/main_header.tpl'}
 <link rel="stylesheet" href="{$tsConfig.url}/dashboard/css/moderacion.css?{$smarty.now}">
 <script type="text/javascript" src="{$tsConfig.url}/dashboard/js/moderacion.js?{$smarty.now}"></script>
 <div class="row" id="borradores">
@@ -33,4 +33,4 @@
       {/if}
    </div>
 </div>
-{include file='sections/main_footer.tpl'}
+{include file='templates/sections/main_footer.tpl'}
