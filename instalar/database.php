@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `p_categorias` (
   `c_img` varchar(32) NOT NULL DEFAULT 'comments.png',
   `c_fa` VARCHAR(80) NOT NULL DEFAULT 'feather',
   `c_color` VARCHAR(6) NOT NULL DEFAULT '212121',
-  `c_desc` int(11) NOT NULL DEFAULT 0,
+  `c_desc` varchar(132) NOT NULL DEFAULT '',
   PRIMARY KEY (`cid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;";
 
