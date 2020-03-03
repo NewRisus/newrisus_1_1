@@ -18,12 +18,12 @@
             <dt><label class="form-label" for="ai_offline">Modo mantenimiento:</label><span>Esto har&aacute; al Sitio inaccesible a los usuarios. Si quiere, tambi&eacute;n puede introducir un breve mensaje (255 caracteres) para mostrar.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_offline" name="offline" class="custom-control-input" value="1"{if $tsConfig.offline==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_offline">S&iacute;</label>
+                  <input type="radio" id="ai_offline1" name="offline" class="custom-control-input" value="1"{if $tsConfig.offline==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_offline1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="offline" id="ai_offline" value="0"{if $tsConfig.offline !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_offline">No</label>
+                  <input type="radio" name="offline" id="ai_offline0" value="0"{if $tsConfig.offline !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_offline0">No</label>
                </div>            
                <input type="text" class="form-control" name="offline_message" id="ai_offline" value="{$tsConfig.offline_message}" />
             </dd>
@@ -141,12 +141,12 @@
             <span>Por seguridad cada que un usuario cambie de IP se le pedir&aacute; loguearse nuevamente.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_sess_ip" name="sess_ip" class="custom-control-input" value="1"{if $tsConfig.c_allow_sess_ip==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_sess_ip">S&iacute;</label>
+                  <input type="radio" id="ai_sess_ip1" name="sess_ip" class="custom-control-input" value="1"{if $tsConfig.c_allow_sess_ip==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_sess_ip1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="sess_ip" id="ai_sess_ip" value="0"{if $tsConfig.c_allow_sess_ip !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_sess_ip">No</label>
+                  <input type="radio" name="sess_ip" id="ai_sess_ip0" value="0"{if $tsConfig.c_allow_sess_ip !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_sess_ip0">No</label>
                </div>
             </dd>
          </dl>
@@ -156,12 +156,12 @@
             <span>Contar a los visitantes en las estad&iacute;sticas generales.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_count_guests" name="count_guests" class="custom-control-input" value="1"{if $tsConfig.c_count_guests==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_count_guests">S&iacute;</label>
+                  <input type="radio" id="ai_count_guests1" name="count_guests" class="custom-control-input" value="1"{if $tsConfig.c_count_guests==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_count_guests1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="count_guests" id="ai_count_guests" value="0"{if $tsConfig.c_count_guests !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_count_guests">No</label>
+                  <input type="radio" name="count_guests" id="ai_count_guests0" value="0"{if $tsConfig.c_count_guests !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_count_guests0">No</label>
                </div>
             </dd>
          </dl>
@@ -171,12 +171,12 @@
             <span>Contar las visitas de los visitantes en posts y fotos.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_hits_guest" name="hits_guest" class="custom-control-input" value="1"{if $tsConfig.c_hits_guest==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_hits_guest">S&iacute;</label>
+                  <input type="radio" id="ai_hits_guest1" name="hits_guest" class="custom-control-input" value="1"{if $tsConfig.c_hits_guest==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_hits_guest1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="hits_guest" id="ai_hits_guest" value="0"{if $tsConfig.c_hits_guest !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_hits_guest">No</label>
+                  <input type="radio" name="hits_guest" id="ai_hits_guest0" value="0"{if $tsConfig.c_hits_guest !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_hits_guest0">No</label>
                </div>
             </dd>
          </dl>
@@ -187,12 +187,12 @@
             <span>Permitir el registro de nuevos usuarios</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_reg_active" name="reg_active" class="custom-control-input" value="1"{if $tsConfig.c_reg_active==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_reg_active">S&iacute;</label>
+                  <input type="radio" id="ai_reg_active1" name="reg_active" class="custom-control-input" value="1"{if $tsConfig.c_reg_active==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_reg_active1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="reg_active" id="ai_reg_active" value="0"{if $tsConfig.c_reg_active !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_reg_active">No</label>
+                  <input type="radio" name="reg_active" id="ai_reg_active0" value="0"{if $tsConfig.c_reg_active !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_reg_active0">No</label>
                </div>
             </dd>
          </dl>
@@ -202,12 +202,12 @@
             <span>Activar autom&aacute;ticamente la cuenta de usuario.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_reg_activate" name="reg_activate" class="custom-control-input" value="1"{if $tsConfig.c_reg_activate==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_reg_activate">S&iacute;</label>
+                  <input type="radio" id="ai_reg_activate1" name="reg_activate" class="custom-control-input" value="1"{if $tsConfig.c_reg_activate==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_reg_activate1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="reg_activate" id="ai_reg_activate" value="0"{if $tsConfig.c_reg_activate !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_reg_activate">No</label>
+                  <input type="radio" name="reg_activate" id="ai_reg_activate0" value="0"{if $tsConfig.c_reg_activate !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_reg_activate0">No</label>
                </div>
             </dd>
          </dl>
@@ -217,12 +217,12 @@
             <span>Las firmas de los usuarios son visibles en los post.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_firma" name="firma" class="custom-control-input" value="1"{if $tsConfig.c_allow_firma==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_firma">S&iacute;</label>
+                  <input type="radio" id="ai_firma1" name="firma" class="custom-control-input" value="1"{if $tsConfig.c_allow_firma==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_firma1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="firma" id="ai_firma" value="0"{if $tsConfig.c_allow_firma !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_firma">No</label>
+                  <input type="radio" name="firma" id="ai_firma0" value="0"{if $tsConfig.c_allow_firma !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_firma0">No</label>
                </div>
             </dd>
          </dl>
@@ -233,12 +233,12 @@
             <span>Si cuentas con un servidor de pago o la librer&iacute;a CURL puedes subir im&aacute;genes remotamente a imgur.com</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_upload" name="upload" class="custom-control-input" value="1"{if $tsConfig.c_allow_upload==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_upload">S&iacute;</label>
+                  <input type="radio" id="ai_upload1" name="upload" class="custom-control-input" value="1"{if $tsConfig.c_allow_upload==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_upload1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="upload" id="ai_upload" value="0"{if $tsConfig.c_allow_upload !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_upload">No</label>
+                  <input type="radio" name="upload" id="ai_upload0" value="0"{if $tsConfig.c_allow_upload !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_upload0">No</label>
                </div>
             </dd>
          </dl>
@@ -248,12 +248,12 @@
             <span>Los usuarios podr&aacute;n tener un inicio perzonalizado.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_portal" name="portal" class="custom-control-input" value="1"{if $tsConfig.c_allow_portal==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_portal">S&iacute;</label>
+                  <input type="radio" id="ai_portal1" name="portal" class="custom-control-input" value="1"{if $tsConfig.c_allow_portal==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_portal1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="portal" id="ai_portal" value="0"{if $tsConfig.c_allow_portal !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_portal">No</label>
+                  <input type="radio" name="portal" id="ai_portal01" value="0"{if $tsConfig.c_allow_portal !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_portal0">No</label>
                </div>
             </dd>
          </dl>
@@ -263,12 +263,12 @@
             <span>Si est&aacute; activado, los visitantes no podr&aacute;n ver la secci&oacute;n fotos.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_fotos_private" name="fotos_private" class="custom-control-input" value="1"{if $tsConfig.c_fotos_private==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_fotos_private">S&iacute;</label>
+                  <input type="radio" id="ai_fotos_private1" name="fotos_private" class="custom-control-input" value="1"{if $tsConfig.c_fotos_private==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_fotos_private1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="fotos_private" id="ai_fotos_private" value="0"{if $tsConfig.c_fotos_private !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_fotos_private">No</label>
+                  <input type="radio" name="fotos_private" id="ai_fotos_private0" value="0"{if $tsConfig.c_fotos_private !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_fotos_private0">No</label>
                </div>
             </dd>
          </dl>
@@ -278,12 +278,12 @@
             <span>Si est&aacute; activado, el equipo de moderaci&oacute;n podr&aacute; ver, diferenciado por colores, los distintos estados de los posts.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_see_mod" name="see_mod" class="custom-control-input" value="1"{if $tsConfig.c_see_mod==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_see_mod">S&iacute;</label>
+                  <input type="radio" id="ai_see_mod1" name="see_mod" class="custom-control-input" value="1"{if $tsConfig.c_see_mod==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_see_mod1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="see_mod" id="ai_see_mod" value="0"{if $tsConfig.c_see_mod !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_see_mod">No</label>
+                  <input type="radio" name="see_mod" id="ai_see_mod0" value="0"{if $tsConfig.c_see_mod !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_see_mod0">No</label>
                </div>
             </dd>
          </dl>
@@ -293,12 +293,12 @@
             <span>Si est&aacute; activado, el equipo de moderaci&oacute;n deber&aacute; aprobar un post antes de que &eacute;ste sea publicado.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_desapprove_post" name="desapprove_post" class="custom-control-input" value="1"{if $tsConfig.c_desapprove_post==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_desapprove_post">S&iacute;</label>
+                  <input type="radio" id="ai_desapprove_post1" name="desapprove_post" class="custom-control-input" value="1"{if $tsConfig.c_desapprove_post==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_desapprove_post1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="desapprove_post" id="ai_desapprove_post" value="0"{if $tsConfig.c_desapprove_post !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_desapprove_post">No</label>
+                  <input type="radio" name="desapprove_post" id="ai_desapprove_post0" value="0"{if $tsConfig.c_desapprove_post !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_desapprove_post0">No</label>
                </div>
             </dd>
          </dl>
@@ -309,12 +309,12 @@
             <span>Al momento de recargar los puntos, si est&aacute; habilitado se conservar&aacute;n los puntos que el usuario no haya gastado los puntos en el d&iacute;, si est&aacute; deshabilitado, se restablecer&aacute;n a los puntos asignados para cada rango.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_keep_points" name="keep_points" class="custom-control-input" value="1"{if $tsConfig.c_keep_points==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_keep_points">S&iacute;</label>
+                  <input type="radio" id="ai_keep_points1" name="keep_points" class="custom-control-input" value="1"{if $tsConfig.c_keep_points==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_keep_points1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="keep_points" id="ai_keep_points" value="0"{if $tsConfig.c_keep_points !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_keep_points">No</label>
+                  <input type="radio" name="keep_points" id="ai_keep_points0" value="0"{if $tsConfig.c_keep_points !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_keep_points0">No</label>
                </div>
             </dd>
          </dl>
@@ -324,12 +324,12 @@
             <span>Los usuarios podr&aacute;n ver en tiempo real sus notificaciones. (Esta opci&oacute;n puede consumir un poco m&aacute;s de recursos.)</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_live" name="live" class="custom-control-input" value="1"{if $tsConfig.c_allow_live==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_live">S&iacute;</label>
+                  <input type="radio" id="ai_live1" name="live" class="custom-control-input" value="1"{if $tsConfig.c_allow_live==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_live1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="live" id="ai_live" value="0"{if $tsConfig.c_allow_live !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_live">No</label>
+                  <input type="radio" name="live" id="ai_live0" value="0"{if $tsConfig.c_allow_live !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_live0">No</label>
                </div>
             </dd>
          </dl>
@@ -380,12 +380,12 @@
             <span>Cada voto positivo en un comentario es un punto m&aacute;s para el usuario. <strong>Nota:</strong> Los votos negativos no restan puntos</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_sum_p" name="sump" class="custom-control-input" value="1"{if $tsConfig.c_allow_sump==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_sum_p">S&iacute;</label>
+                  <input type="radio" id="ai_sum_p1" name="sump" class="custom-control-input" value="1"{if $tsConfig.c_allow_sump==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_sum_p1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="sump" id="ai_sum_p" value="0"{if $tsConfig.c_allow_sump !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_sum_p">No</label>
+                  <input type="radio" name="sump" id="ai_sum_p0" value="0"{if $tsConfig.c_allow_sump !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_sum_p0">No</label>
                </div>
             </dd>
          </dl>
@@ -396,12 +396,12 @@
             <span>Un usuario sube de rango cuando obtiene los puntos m&iacute;nimos en:</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_nfu" name="newr" class="custom-control-input" value="1"{if $tsConfig.c_newr_type==1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_nfu">S&iacute;</label>
+                  <input type="radio" id="ai_nfu1" name="newr" class="custom-control-input" value="1"{if $tsConfig.c_newr_type==1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_nfu1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="newr" id="ai_nfu" value="0"{if $tsConfig.c_newr_type !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_nfu">No</label>
+                  <input type="radio" name="newr" id="ai_nfu0" value="0"{if $tsConfig.c_newr_type !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_nfu0">No</label>
                </div>
             </dd>
          </dl>

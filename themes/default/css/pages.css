@@ -1,0 +1,43 @@
+.texto {
+	font-size: 16px;
+	line-height: 1.5em;
+	padding: 10px 0;
+}
+.texto h3 { 
+	text-align: center;
+	background-color: #3333;
+	padding: 6px 0;
+	display: block;
+	margin: 10px 0 0 0;
+}
+.texto strong {
+	text-transform: uppercase;
+	font-size: 18px;
+	display: block;
+	margin-left: 10px;
+}
+.texto ul {
+	margin-left: 12px;
+	font-size: 12px;
+	list-style: square;
+}
+.texto ul li {
+	padding: 6px;
+}
+.texto .alert {
+	font-size: 14px;
+}
+.texto .alert strong {
+	margin: 0;
+}
+.texto .alert p {
+	margin: 0;
+	padding: 0 0 0 20px;
+}
+.texto a {
+	font-weight: 600;
+	color: #42474C;
+}
+.texto p {
+	padding-left: 14px;
+}

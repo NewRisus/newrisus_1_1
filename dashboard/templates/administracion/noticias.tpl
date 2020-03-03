@@ -47,12 +47,12 @@
 				<dt><label for="ai_not_active">Activar noticia:</label><span>Activar inmediatamente esta noticia en {$tsConfig.titulo}.</span></dt>
 				<dd>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" id="ai_not_active" name="not_active" class="custom-control-input" value="1"{if $tsNew.not_active == 1 } checked="checked"{/if}>
-                  <label class="custom-control-label" for="ai_not_active">S&iacute;</label>
+                  <input type="radio" id="ai_not_active1" name="not_active" class="custom-control-input" value="1"{if $tsNew.not_active == 1 } checked="checked"{/if}>
+                  <label class="custom-control-label" for="ai_not_active1">S&iacute;</label>
                </div>
                <div class="custom-control custom-radio custom-control-inline">
-                  <input type="radio" name="not_active" id="ai_not_active" value="0"{if $tsNew.not_active !=1 } checked="checked"{/if} class="custom-control-input">
-                  <label class="custom-control-label" for="ai_not_active">No</label>
+                  <input type="radio" name="not_active" id="ai_not_active0" value="0"{if $tsNew.not_active !=1 } checked="checked"{/if} class="custom-control-input">
+                  <label class="custom-control-label" for="ai_not_active0">No</label>
                </div> 
 				</dd>
 			</dl>

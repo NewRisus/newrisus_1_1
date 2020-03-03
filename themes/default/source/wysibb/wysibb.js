@@ -112,19 +112,19 @@ wbbdebug = false;
 			onlyBBmode:			false,
 			themeName:			"default", 
 			bodyClass:			"",
-			lang:				"es",
+			lang:					"es",
 			tabInsert:			true,
-			toolbar:			true,
+			toolbar:				true,
 			//img upload config 
 			imgupload:			true,
-			img_uploadurl:		global_data.url + "/iupload/",
+			img_uploadurl:		global_data.url + "/inc/ext/wysibbupload.php",
 			img_maxwidth:		800,
 			img_maxheight:		640,
-			hotkeys:			true,
+			hotkeys:				true,
 			showHotkeys:		true,
 			autoresize:			true,
 			resize_maxheight:	500,
-			loadPageStyles:		true,
+			loadPageStyles:	true,
 			traceTextarea:		true,
 //			direction:			"ltr",
 			smileConversion:	true,
@@ -234,8 +234,8 @@ wbbdebug = false;
 						onLoad: this.imgLoadModal
 					},
 					transform : {
-						'<img src="{SRC}" style="max-width: 100%;">':"[img={SRC}]",
-						'<img src="{SRC}" style="max-width: 100%;" />':"[img]{SRC}[/img]"
+						'<img src="{SRC}" style="width: 80%;">':"[img={SRC}]",
+						'<img src="{SRC}" style="width: 80%;" />':"[img]{SRC}[/img]"
 					}
 				},
 				bullist : {
