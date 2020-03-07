@@ -19,7 +19,6 @@ JBBCode las últimas actualizaciones de hace 12 meses.
 * 1TSR4SCII - Actualización de códigos para **PHPost**.
 * Miguel92 - Diseño y programación.
 * Tuente - Diseño y estructuración.
-* Risus2 - Jquery actualizado.
 * **PHPost** - Comunidad con aportes de todos sus miembros.
 
 > Todos estos autores se pueden encontrar en http://phpost.net/foro/
