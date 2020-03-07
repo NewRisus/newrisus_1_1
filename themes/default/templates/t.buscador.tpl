@@ -88,7 +88,7 @@
                                         <h6 class="mt-0"><a href="{$tsConfig.url}/posts/{$r.c_seo}/{$r.post_id}/{$r.post_title|seo}.html">{$r.post_title}</a></h6>
                                     </div>
                                     <div class="float-right">
-                                        <a href="{$tsConfig.url}/posts/{$r.c_seo}/"><span class="badge badge-primary badge-categoria-inicio" style="background: #{$r.c_color}; color: #fff !important;"><i class="fas fa-{$r.c_fa}"></i> {$r.c_nombre}</span></a>
+                                        <a href="{$tsConfig.url}/posts/{$r.c_seo}/"><span class="badge badge-primary badge-categoria-inicio" style="background: #{$r.c_color}; color: #fff !important;"><i class="{$r.c_fa}"></i> {$r.c_nombre}</span></a>
                                         <span style="float: right;padding-left: 0.5rem;"><h6 class="mt-0"><i class="far fa-comments"></i> {$r.post_comments}</h6></span>
                                     </div>
                                 </div>

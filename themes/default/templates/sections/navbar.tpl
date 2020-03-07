@@ -24,10 +24,10 @@
                 <a class="nav-link nr-menu-ico" href="{$tsConfig.url}/agregar/" title="Publicar nuevo tema"><i class="fas fa-plus-circle"></i></a>
             </li>
             <li class="nav-item navbar-text iconos-navbar nr-noti-msg notificaciones">
-                <a class="nav-link nr-menu-ico" href="{$tsConfig.url}/monitor/" title="Revisar mis notificaciones"><i class="fas fa-bell"></i></a>
+                <a class="nav-link nr-menu-ico{if $tsNots > 0} has-notmp{/if}" href="{$tsConfig.url}/monitor/" title="Revisar mis notificaciones"><i class="fas fa-bell"></i></a>
             </li>
             <li class="nav-item navbar-text iconos-navbar nr-noti-msg messages">
-                <a class="nav-link nr-menu-ico" href="{$tsConfig.url}/mensajes/" title="Revisar mis mensajes"><i class="fas fa-envelope"></i></a>
+                <a class="nav-link nr-menu-ico{if $tsMPs > 0} has-notmp{/if}" href="{$tsConfig.url}/mensajes/" title="Revisar mis mensajes"><i class="fas fa-envelope"></i></a>
             </li>
             <li class="nav-item navbar-text dropdown iconos-navbar">
                 <a class="nav-link nr-menu-ico" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{$tsUser->nick} <img src="{$tsConfig.url}/files/avatar/{$tsUser->uid}_120.jpg" class="avatar-menu"></a>

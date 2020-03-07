@@ -151,14 +151,6 @@
     // Mensajes
     $smarty->assign('tsMPs',$tsMP->mensajes);
 
-    if($tsCore->settings['c_recaptcha'] == 0) {
-        define('RC_PUK',$tsCore->settings['pkey']);
-        define('RC_PIK',$tsCore->settings['skey']);
-    } else {
-        define('RC_PUK',$tsCore->settings['pkey3']);
-        define('RC_PIK',$tsCore->settings['skey3']);
-    }
-    
     // Crean requests
     include TS_EXTRA.'NewRisus_Settings.php';
 /*

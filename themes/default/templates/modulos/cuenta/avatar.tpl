@@ -13,8 +13,8 @@
                     <h6><i class="fas fa-desktop"></i> Desde el PC</h6>
                     <p>Subir una imagen de perfil desde tu PC.</p>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="file-avatar" id="file-avatar" lang="es">
-                        <label class="custom-file-label" for="file-avatar">Seleccionar Archivo</label>
+                        <input type="file" name="file-avatar" id="file-avatar" class="inputfile custom"/>
+                        <label for="file-avatar"><span id="file_name"></span><strong>Seleccionar...</strong></label>
                     </div>
                     <button onclick="avatar.upload(this)" class="avatar-next local btn btn-success" style="margin-top: 0.5em;">Subir</button>
                 </div>

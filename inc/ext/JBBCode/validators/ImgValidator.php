@@ -19,10 +19,9 @@ class ImgValidator implements \JBBCode\InputValidator {
      */
     public function validate($input) {
         $img['url'] = $input;
-        $img['size'] = getimagesize($img['url']);
-        $img['type'] = $img['size'][2];
-        
-        return (bool)(in_array($img['type'], array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG , IMAGETYPE_BMP)));
+        $img['type'] = exif_imagetype($img['url']);
+      
+      return (bool)(in_array($img['type'], array(IMAGETYPE_GIF , IMAGETYPE_JPEG ,IMAGETYPE_PNG , IMAGETYPE_BMP)));
     }
 
 }

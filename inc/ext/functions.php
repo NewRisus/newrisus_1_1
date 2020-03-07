@@ -7,17 +7,12 @@
 $db_link = mysqli_connect($db['hostname'], $db['username'], $db['password'], $db['database']);
 
 // Comprobamos el estado de la conexión
-if( mysqli_connect_errno() )
-{
+if( mysqli_connect_errno() ) {
     exit( show_error( 'No se pudo establecer la conexi&oacute;n con la base de datos.</p> <p class="warning">'.mysqli_connect_error() , 'other') );
-}
-else
-{
-    if ( !mysqli_set_charset($db_link, 'utf8') )
-    {
+} else {
+    if ( !mysqli_set_charset($db_link, 'utf8') ) {
         exit( show_error( 'No se pudo establecer la codificaci&oacute;n de caracteres.', 'db' ) );
     }
-    
     //mysqli_query($db_link, 'set names \'utf8\'');
 	//mysqli_query($db_link, 'set character set utf8');
 }
@@ -25,8 +20,7 @@ else
 /**
  * Ejecutar consulta
  */
-function db_exec()
-{
+function db_exec() {
 	if(isset(func_get_args()[0])) $info = func_get_args()[0];
 	if(isset(func_get_args()[1])) $type = func_get_args()[1];
 	if(isset(func_get_args()[2])) $data = func_get_args()[2];
@@ -50,38 +44,21 @@ function db_exec()
         $query = mysqli_query($db_link, $data);
         if(!$query && !$tsAjax && $display['msgs'] && ($info['file'] || $info['line'] || ($info['query'] && $tsUser->is_admod))) exit( show_error( 'No se pudo ejecutar una consulta en la base de datos.', 'db', $info ) );
         return $query;
-    }
-    elseif($type === 'real_escape_string')
-    {
+    } elseif($type === 'real_escape_string') {
         return mysqli_real_escape_string($db_link, $data);
-    }
-    elseif($type === 'num_rows')
-    {
+    } elseif($type === 'num_rows') {
         return mysqli_num_rows($data);
-    }
-    elseif($type === 'fetch_assoc')
-    {
-        
+    } elseif($type === 'fetch_assoc') {
         return mysqli_fetch_assoc($data);
-    }
-    elseif($type === 'fetch_array')
-    {
+    } elseif($type === 'fetch_array') {
         return mysqli_fetch_array($data);
-    }
-    elseif($type === 'fetch_row')
-    {
+    } elseif($type === 'fetch_row') {
         return mysqli_fetch_row($data);
-    }
-    elseif($type === 'free_result')
-    {
+    } elseif($type === 'free_result') {
         return mysqli_free_result($data);
-    }
-    elseif($type === 'insert_id')
-    {
+    } elseif($type === 'insert_id') {
         return mysqli_insert_id($db_link);
-    }
-    elseif($type === 'error')
-    {
+    } elseif($type === 'error') {
         return mysqli_error($db_link);
     }
 }

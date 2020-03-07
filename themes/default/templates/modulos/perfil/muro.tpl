@@ -3,11 +3,11 @@
         muro.stream.total = {$tsMuro.total};
     </script>
     <div id="perfil-form" class="widget">
-        {if $tsPrivacidad.mf.v == true}
+    {if $tsPrivacidad.mf.v == true}
         {include file='modulos/perfil/estado.tpl'}
-        {else}
+    {else}
         <div class="emptyData" style="border-top:none">{$tsPrivacidad.mf.m}</div>
-        {/if}
+    {/if}
     </div>
     <div class="widget clearfix" id="perfil-wall">
         <div id="wall-content">

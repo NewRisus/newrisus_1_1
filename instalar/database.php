@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `p_categorias` (
   `c_nombre` varchar(32) NOT NULL DEFAULT '',
   `c_seo` varchar(32) NOT NULL DEFAULT '',
   `c_img` varchar(32) NOT NULL DEFAULT 'comments.png',
-  `c_fa` VARCHAR(80) NOT NULL DEFAULT 'feather',
+  `c_fa` VARCHAR(80) NOT NULL DEFAULT 'fas fa-feather',
   `c_color` VARCHAR(6) NOT NULL DEFAULT '212121',
   `c_desc` varchar(132) NOT NULL DEFAULT '',
   PRIMARY KEY (`cid`)
@@ -91,39 +91,39 @@ CREATE TABLE IF NOT EXISTS `p_categorias` (
 
 $phpos_sql['pv_categorias'] = "
 INSERT INTO `p_categorias` (`cid`, `c_hcat`, `c_orden`, `c_nombre`, `c_seo`, `c_img`, `c_fa`, `c_color`, `c_desc`) VALUES
-(1, 0, 1, 'Animaciones', 'animaciones', 'flash.png', 'feather', '212121', 'Descripción aquí'),
-(2, 0, 2, 'Apuntes y Monografías', 'apuntesymonografias', 'report.png', 'feather', '212121', 'Descripción aquí'),
-(3, 0, 3, 'Arte', 'arte', 'palette.png', 'feather', '212121', 'Descripción aquí'),
-(4, 0, 4, 'Autos y Motos', 'autosymotos', 'car.png', 'feather', '212121', 'Descripción aquí'),
-(5, 0, 5, 'Celulares', 'celulares', 'phone.png', 'feather', '212121', 'Descripción aquí'),
-(6, 0, 6, 'Ciencia y Educación', 'cienciayeducacion', 'lab.png', 'feather', '212121', 'Descripción aquí'),
-(7, 0, 7, 'Comics', 'comics', 'comic.png', 'feather', '212121', 'Descripción aquí'),
-(8, 0, 8, 'Deportes', 'deportes', 'sport.png', 'feather', '212121', 'Descripción aquí'),
-(9, 0, 9, 'Downloads', 'downloads', 'disk.png', 'feather', '212121', 'Descripción aquí'),
-(10, 0, 10, 'E-books y Tutoriales', 'ebooksytutoriales', 'ebook.png', 'feather', '212121', 'Descripción aquí'),
-(11, 0, 11, 'Ecología', 'ecologia', 'nature.png', 'feather', '212121', 'Descripción aquí'),
-(12, 0, 12, 'Economía y Negocios', 'economiaynegocios', 'economy.png', 'feather', '212121', 'Descripción aquí'),
-(13, 0, 13, 'Femme', 'femme', 'female.png', 'feather', '212121', 'Descripción aquí'),
-(14, 0, 14, 'Hazlo tu mismo', 'hazlotumismo', 'escuadra.png', 'feather', '212121', 'Descripción aquí'),
-(15, 0, 15, 'Humor', 'humor', 'humor.png', 'feather', '212121', 'Descripción aquí'),
-(16, 0, 16, 'Imágenes', 'imagenes', 'photo.png', 'feather', '212121', 'Descripción aquí'),
-(17, 0, 17, 'Info', 'info', 'book.png', 'feather', '212121', 'Descripción aquí'),
-(18, 0, 18, 'Juegos', 'juegos', 'controller.png', 'feather', '212121', 'Descripción aquí'),
-(19, 0, 19, 'Links', 'links', 'link.png', 'feather', '212121', 'Descripción aquí'),
-(20, 0, 20, 'Linux', 'linux', 'tux.png', 'feather', '212121', 'Descripción aquí'),
-(21, 0, 21, 'Mac', 'mac', 'mac.png', 'feather', '212121', 'Descripción aquí'),
-(22, 0, 22, 'Manga y Anime', 'mangayanime', 'manga.png', 'feather', '212121', 'Descripción aquí'),
-(23, 0, 23, 'Mascotas', 'mascotas', 'pet.png', 'feather', '212121', 'Descripción aquí'),
-(24, 0, 24, 'Música', 'musica', 'music.png', 'feather', '212121', 'Descripción aquí'),
-(25, 0, 25, 'Noticias', 'noticias', 'newspaper.png', 'feather', '212121', 'Descripción aquí'),
-(26, 0, 26, 'Off Topic', 'offtopic', 'comments.png', 'feather', '212121', 'Descripción aquí'),
-(27, 0, 27, 'Recetas y Cocina', 'recetasycocina', 'cake.png', 'feather', '212121', 'Descripción aquí'),
-(28, 0, 28, 'Salud y Bienestar', 'saludybienestar', 'heart.png', 'feather', '212121', 'Descripción aquí'),
-(29, 0, 29, 'Solidaridad', 'solidaridad', 'salva.png', 'feather', '212121', 'Descripción aquí'),
-(30, 0, 30, 'Taringa!', 'taringa', 'tscript.png', 'feather', '212121', 'Descripción aquí'),
-(31, 0, 31, 'Turismo', 'turismo', 'brujula.png', 'feather', '212121', 'Descripción aquí'),
-(32, 0, 32, 'TV, Peliculas y series', 'tvpeliculasyseries', 'tv.png', 'feather', '212121', 'Descripción aquí'),
-(33, 0, 33, 'Videos On-line', 'videosonline', 'film.png', 'feather', '212121', 'Descripción aquí');";
+(1, 0, 1, 'Animaciones', 'animaciones', 'flash.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(2, 0, 2, 'Apuntes y Monografías', 'apuntesymonografias', 'report.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(3, 0, 3, 'Arte', 'arte', 'palette.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(4, 0, 4, 'Autos y Motos', 'autosymotos', 'car.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(5, 0, 5, 'Celulares', 'celulares', 'phone.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(6, 0, 6, 'Ciencia y Educación', 'cienciayeducacion', 'lab.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(7, 0, 7, 'Comics', 'comics', 'comic.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(8, 0, 8, 'Deportes', 'deportes', 'sport.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(9, 0, 9, 'Downloads', 'downloads', 'disk.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(10, 0, 10, 'E-books y Tutoriales', 'ebooksytutoriales', 'ebook.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(11, 0, 11, 'Ecología', 'ecologia', 'nature.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(12, 0, 12, 'Economía y Negocios', 'economiaynegocios', 'economy.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(13, 0, 13, 'Femme', 'femme', 'female.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(14, 0, 14, 'Hazlo tu mismo', 'hazlotumismo', 'escuadra.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(15, 0, 15, 'Humor', 'humor', 'humor.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(16, 0, 16, 'Imágenes', 'imagenes', 'photo.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(17, 0, 17, 'Info', 'info', 'book.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(18, 0, 18, 'Juegos', 'juegos', 'controller.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(19, 0, 19, 'Links', 'links', 'link.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(20, 0, 20, 'Linux', 'linux', 'tux.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(21, 0, 21, 'Mac', 'mac', 'mac.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(22, 0, 22, 'Manga y Anime', 'mangayanime', 'manga.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(23, 0, 23, 'Mascotas', 'mascotas', 'pet.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(24, 0, 24, 'Música', 'musica', 'music.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(25, 0, 25, 'Noticias', 'noticias', 'newspaper.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(26, 0, 26, 'Off Topic', 'offtopic', 'comments.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(27, 0, 27, 'Recetas y Cocina', 'recetasycocina', 'cake.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(28, 0, 28, 'Salud y Bienestar', 'saludybienestar', 'heart.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(29, 0, 29, 'Solidaridad', 'solidaridad', 'salva.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(30, 0, 30, 'Taringa!', 'taringa', 'tscript.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(31, 0, 31, 'Turismo', 'turismo', 'brujula.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(32, 0, 32, 'TV, Peliculas y series', 'tvpeliculasyseries', 'tv.png', 'fas fa-feather', '212121', 'Descripción aquí'),
+(33, 0, 33, 'Videos On-line', 'videosonline', 'film.png', 'fas fa-feather', '212121', 'Descripción aquí');";
 
 $phpos_sql['p_hcats'] = "
 CREATE TABLE IF NOT EXISTS `p_hcats` (
@@ -654,7 +654,7 @@ CREATE TABLE IF NOT EXISTS `w_blacklist` (
   `author` int(11) NOT NULL DEFAULT 0,
   `date` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;";
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
 
 $phpos_sql['w_badwords'] = "
 CREATE TABLE IF NOT EXISTS `w_badwords` (
@@ -667,7 +667,7 @@ CREATE TABLE IF NOT EXISTS `w_badwords` (
   `reason` varchar(255) NOT NULL DEFAULT '',
   `date` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`wid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;";
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
 
 $phpos_sql['w_stats'] = "
 CREATE TABLE IF NOT EXISTS `w_stats` (

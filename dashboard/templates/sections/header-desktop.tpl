@@ -4,7 +4,7 @@
          <div class="header-wrap2">
             <div class="logo d-block d-lg-none">
                <div class="logo">
-                  <a href="{$tsConfig.url}">{$tsConfig.titulo}</a>
+                  <a href="{$tsConfig.url}">{$tsConfig.titulo|truncate:3:''}</a>
                </div>
             </div>
             <div class="header-button2">

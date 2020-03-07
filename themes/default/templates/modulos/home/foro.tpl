@@ -10,7 +10,7 @@
         <div class="nr-home-categorias">
             <div class="nr-sector-uno">
                 <div class="nr-home-categoria-icono d-none d-sm-none d-md-block" style="background-color: #{$c.c_color}">
-                    <i class="fa fa-{$c.c_fa}"></i>
+                    <i class="{$c.c_fa}"></i>
                 </div>
                 <div class="nr-home-categoria-titulo">
                     <a rel="dofollow" href="{$tsConfig.url}/posts/{$c.c_seo}/">{$c.c_nombre}</a><br>

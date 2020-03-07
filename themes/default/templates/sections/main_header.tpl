@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>{$tsTitle}</title>
 <!-- Estilos CSS -->
-<link href="{$tsConfig.css}/bootstrap.min.css?{$smarty.now}" rel="stylesheet">
+<link href="{$tsConfig.tema.t_url}/source/bootstrap/bootstrap.min.css?{$smarty.now}" rel="stylesheet">
 <link href="{$tsConfig.tema.t_url}/estilo.css?{$smarty.now}" rel="stylesheet" />
 <link href="{$tsConfig.tema.t_url}/phpost.css?{$smarty.now}" rel="stylesheet" />
 <link href="{$tsConfig.tema.t_url}/extras.css?{$smarty.now}" rel="stylesheet" />
@@ -24,11 +24,11 @@
 <link href="{$tsConfig.css}/flag-icon.css?{$smarty.now}" rel="stylesheet" type="text/css" />
 <!-- Javascript -->
 <script src="{$tsConfig.js}/jquery.min.js?{$smarty.now}"></script>
+<script src="{$tsConfig.tema.t_url}/source/bootstrap/popper.min.js"></script>
+<script src="{$tsConfig.tema.t_url}/source/bootstrap/bootstrap.min.js"></script>
 <script src="{$tsConfig.js}/jquery.plugins.js?{$smarty.now}" type="text/javascript"></script>
 <script src="{$tsConfig.js}/acciones.js?{$smarty.now}" type="text/javascript"></script>
 <script src="{$tsConfig.js}/funciones.js?{$smarty.now}" type="text/javascript"></script>
-<script src="{$tsConfig.js}/popper.min.js"></script>
-<script src="{$tsConfig.js}/bootstrap.min.js"></script>
 <script src="{$tsConfig.tema.t_url}/source/wysibb/wysibb.js?{$smarty.now}" type="text/javascript"></script>
 {if $tsUser->is_admod || $tsUser->permisos.moacp || $tsUser->permisos.most || $tsUser->permisos.moayca || $tsUser->permisos.mosu || $tsUser->permisos.modu || $tsUser->permisos.moep || $tsUser->permisos.moop || $tsUser->permisos.moedcopo || $tsUser->permisos.moaydcp || $tsUser->permisos.moecp}
 <script src="{$tsConfig.url}/dashboard/js/moderacion.js" type="text/javascript"></script>

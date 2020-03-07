@@ -51,7 +51,7 @@ $c_collection = add_check_query('Chat', $c_collection,
     )
 );
 
-$collection = add_query('Categorías', $collection, 'ALTER TABLE `p_categorias` ADD `c_fa` VARCHAR(80) NOT NULL DEFAULT \'feather\'');
+$collection = add_query('Categorías', $collection, 'ALTER TABLE `p_categorias` ADD `c_fa` VARCHAR(80) NOT NULL DEFAULT \'fas fa-feather\'');
 $collection = add_query('Categorías', $collection, 'ALTER TABLE `p_categorias` ADD `c_color` VARCHAR(80) NOT NULL DEFAULT \'353535\'');
 $collection = add_query('Categorías', $collection, 'ALTER TABLE `p_categorias` ADD `c_desc` int(11) NOT NULL DEFAULT 0');
 $c_collection = add_check_query('Categorías', $c_collection,

@@ -22,10 +22,10 @@
                 <div class="float-right d-none d-sm-none d-md-block">
                     {if $p.post_sponsored}
                     <div class="nr-tema-spon">
-                        <a href="{$tsConfig.url}/posts/{$p.c_seo}/"><span class="badge badge-primary badge-categoria-inicio" style="background: #{$p.c_color}; border-radius:.25rem 0rem 0rem .25rem;"><i class="fas fa-{$p.c_fa}"></i> {$p.c_nombre}</span></a><span class="badge badge-primary badge-categoria-inicio" style="border-radius: 0rem .25rem .25rem 0rem;background: #FFAB00;"><i class="far fa-star"></i> Sponsored</span>
+                        <a href="{$tsConfig.url}/posts/{$p.c_seo}/"><span class="badge badge-primary badge-categoria-inicio" style="background: #{$p.c_color}; border-radius:.25rem 0rem 0rem .25rem;"><i class="{$p.c_fa}"></i> {$p.c_nombre}</span></a><span class="badge badge-primary badge-categoria-inicio" style="border-radius: 0rem .25rem .25rem 0rem;background: #FFAB00;"><i class="far fa-star"></i> Sponsored</span>
                     </div>
                     {else}
-                    <a href="{$tsConfig.url}/posts/{$p.c_seo}/"><span class="badge badge-primary badge-categoria-inicio" style="background: #{$p.c_color};"><i class="fas fa-{$p.c_fa}"></i> {$p.c_nombre}</span></a>
+                    <a href="{$tsConfig.url}/posts/{$p.c_seo}/"><span class="badge badge-primary badge-categoria-inicio" style="background: #{$p.c_color};"><i class="{$p.c_fa}"></i> {$p.c_nombre}</span></a>
                     {/if}<br>
                     <span style="float: right;padding: .2em 0em;font-weight: 600;font-size: 1.2em;"><i class="far fa-comments"></i> {$p.post_comments}</span>
                 </div>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="float-right d-none d-sm-none d-md-block">
                     <div class="nr-tema-spon">
-                    <a href="{$tsConfig.url}/posts/{$p.c_seo}/"><span class="badge badge-primary badge-categoria-inicio" style="background: #{$p.c_color};"><i class="fas fa-{$p.c_fa}"></i> {$p.c_nombre}</span></a>
+                    <a href="{$tsConfig.url}/posts/{$p.c_seo}/"><span class="badge badge-primary badge-categoria-inicio" style="background: #{$p.c_color};"><i class="{$p.c_fa}"></i> {$p.c_nombre}</span></a>
                     </div>
                     <br>
                     <span style="float: right;padding: .2em 0em;font-weight: 600;font-size: 1.2em;"><i class="far fa-comments"></i> {$p.post_comments}</span>

@@ -16,7 +16,7 @@
             {foreach from=$tsConfig.categorias item=c}
             <tr>
                <td>{$c.c_orden}</td>
-               <td style="width: 25px;"><i class="fa fa-{$c.c_fa}" style="font-size:18px; color: #{$c.c_color};"></i></td>
+               <td style="width: 25px;"><i class="{$c.c_fa}" style="font-size:18px; color: #{$c.c_color};"></i></td>
                <td><span style="color: #{$c.c_color};">{$c.c_nombre}</span></td>
                <td>{$c.c_desc}</td>
                <td class="admin_actions">
@@ -54,7 +54,7 @@
             </dd>
          </dl>
          <dl>
-            <dt><label for="cat_fa">Icono:</label><span>Ingresa el código del icono, considerando que en el siguiente formulario <b>ya se encuentra fa fa-</b>.</span></dt>
+            <dt><label for="cat_fa">Icono:</label><span>Ingresa el código del icono, considerando que en el siguiente formulario.</span></dt>
             <dd>
             <input type="text" class="form-control" id="cat_fa" name="c_fa" value="{$tsCat.c_fa}" aria-label="{$tsCat.c_fa}" aria-describedby="basic-addon1"></dd>
          </dl>
@@ -72,7 +72,7 @@
                $('#desc').html(e.target.value);
             });
             $('input[name=c_fa]').on("change", function(e){
-               $('#icon').removeClass('fa-{$tsCat.c_fa}').toggleClass('fa-'+e.target.value);
+               $('#icon').removeClass('{$tsCat.c_fa}').toggleClass(e.target.value);
             });
             $('input[name=c_color]').on("change", function(e){
                $('.icono-categoria').css("background", "#"+e.target.value);
@@ -84,7 +84,7 @@
                <small class="text-muted">Vista previa</small>
                <div class="col-sm-12 categoria-foro-uno">
                   <span class="icono-categoria" style="background: #{$tsCat.c_color};">
-                     <i id="icon" class="fa fa-{$tsCat.c_fa}"></i>
+                     <i id="icon" class="{$tsCat.c_fa}"></i>
                   </span>
                   <span class="titulo-categoria">
                      <a rel="dofollow" href="#" id="cate">{$tsCat.c_nombre}</a>

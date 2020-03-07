@@ -1,0 +1,43 @@
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.custom + label {
+   color: #444;
+	overflow: hidden;
+	display: block;
+}
+.custom:focus + label,
+.custom + label:hover {
+  border-color: #0E508E;
+}
+.custom + label span {
+	display: none;
+	padding: 8px;
+	margin-top: 6px;
+	word-wrap: break-word;
+	border:1px solid #0E508E;
+}
+.custom + label strong {
+	border:1px solid #CCC;
+	margin-top: 6px;
+	padding: 8px 0;
+	display: block;
+	text-align: center;
+	position: relative;
+	min-height: 38px;
+	max-height: 50px;
+	line-height: 30px;
+}
+.custom + label:hover strong {
+  color: #80B3FF;
+  cursor: pointer;
+}
+.custom + label:hover span {
+  cursor: pointer;
+
+}

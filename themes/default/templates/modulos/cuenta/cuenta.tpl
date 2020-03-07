@@ -1,5 +1,6 @@
 <div class="content-tabs cuenta">
     <h4>Ajustes de cuenta</h4>
+    <div class="alert-cuenta cuenta-1"></div>
     <form>
         <div class="field form-group">
             <label for="email">E-Mail:</label>
@@ -28,8 +29,8 @@
         <div class="field form-group">
             <label for="sexo">Sexo:</label>
             <select name="sexo" id="sexo" class="cuenta-save-1 form-control">
-                <option value="m" name="sexo" {if $tsPerfil.user_sexo ==     '1'}selected="selected"{/if}>Masculino</option>
-                <option value="f" name="sexo" {if $tsPerfil.user_sexo ==     '0'}selected="selected"{/if}>Femenino</option>
+                <option value="m" name="sexo" {if $tsPerfil.user_sexo == '1'}selected="selected"{/if}>Masculino</option>
+                <option value="f" name="sexo" {if $tsPerfil.user_sexo == '0'}selected="selected"{/if}>Femenino</option>
             </select>
         </div>
         <div class="field form-group">
@@ -66,7 +67,6 @@
         </div>
         {/if}    
     </form>
-    <div class="alert-cuenta cuenta-1"></div>
     <div class="buttons">
         <input type="button" value="Guardar" onclick="cuenta.save(1)" class="btn btn-primary">
     </div>

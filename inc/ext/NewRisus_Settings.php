@@ -1,6 +1,14 @@
 <?php 
 define('VersionTheme', '1.1');
 
+if($tsCore->settings['c_recaptcha'] == 0) {
+  define('RC_PUK',$tsCore->settings['pkey']);
+  define('RC_PIK',$tsCore->settings['skey']);
+} else {
+  define('RC_PUK',$tsCore->settings['pkey3']);
+  define('RC_PIK',$tsCore->settings['skey3']);
+}
+
 /* FORZAMOS EL IDIOMA ESPAÑOL */
 setlocale(LC_ALL, "es_ES");
 /* NUMBER_FORMAT */
@@ -88,3 +96,8 @@ if($_GET['f'] == 'instalar' || $_GET['f'] == 'actualizar'){
   closedir($dh);
   @rmdir($CInstAct);
 }
+
+# Con esta función modificamos la base de datos para que se codifique con UTF-8 (á, é, í, etc)
+include '../../config.inc.php';
+$database = $db['database'];
+db_exec(array(__FILE__, __LINE__), 'query', "ALTER DATABASE {$database} CHARACTER SET utf8 COLLATE utf8_general_ci");

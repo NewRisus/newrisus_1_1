@@ -23,7 +23,7 @@
                     <a href="#" class="a_blue" onclick="muro.stream.load('video', this); return false;"><i class="fas fa-video"></i></a>
                     </span>
                 </li>
-                <li class="streamLoader"><img width="16" height="11" alt="" src="http://static.ak.fbcdn.net/rsrc.php/yb/r/GsNJNwuI-UM.gif" class="img"/></li>
+                <li class="streamLoader"><img width="16" height="11" alt="" src="{$tsConfig.images}/loading_white.gif" class="img"/></li>
             </ul>
         </li>
     </ul>
@@ -56,12 +56,10 @@
                     <textarea class="form-control" id="attaDesc" onfocus="onfocus_input(this)" onblur="onblur_input(this)" title="{if $tsInfo.uid == $tsUser->uid}&iquest;Qu&eacute; est&aacute;s pensando?{else}Escribe algo....{/if}" style="min-height:38px !important;"></textarea>
                 </div>
             </div>
-            <input type="button" class="mBtn btnOk shareBtn" value="Compartir" onclick="muro.stream.compartir();" />
-            <div class="clearBoth"></div>
+            <input type="button" class="btn btn-info shareBtn" value="Compartir" onclick="muro.stream.compartir();" />
         </div>
     </div>
     <div class="btnStatus">
         <input type="button" class="btn btn-success" value="Compartir" onclick="muro.stream.compartir();" /><br>
-        <div class="clearBoth"></div>
     </div>
 </div>

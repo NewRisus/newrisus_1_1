@@ -516,3 +516,6 @@ span.ma_medal{ background: url(images/icons/med/blue_bronze_16.png);}
     text-align:center;
     }
     
+.has-notmp {
+    color: #2d3436;
+}

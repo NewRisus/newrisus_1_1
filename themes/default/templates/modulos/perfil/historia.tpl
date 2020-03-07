@@ -21,39 +21,7 @@
     box-shadow: 0px 0px 3px #eee;
     width: 100%;
     height: 100%;
-}
-.nr-estatu img {
-    width: 100%;
-    height: 100%;
-    margin: 1em auto;
-    border-radius: 3px;
-    box-shadow: 0px 0px 3px whitesmoke;
-}
-    
-.uiLink {
-    font-size: 1.3em;
-    line-height: 20px;
-    padding: 0.5em 0.5em;
-    border-left: 3px solid #eee;
-}
-    
-.videoDesc {
-    display: block;
-    position: absolute;
-    bottom: 11px;
-    left: 15px;
-    color: #fff;
-    width: 94.9%;
-    padding: 1em;
-    border-radius: 0px 0px 3px 3px;
-    background: rgba(0,0,0,0.7);
-}
-    
-.videoDesc a {
-    font-size: 1.5em;
-    color: #fff !important;
-    text-shadow: 0px 0px 3px #454545;
-}
+}   
 </style>
 {/literal}
 
@@ -61,11 +29,12 @@
 <div id="pub_{$p.pub_id}" style="margin: 1em auto;">
     <div class="row history" id="pub_{$p.pub_id}">
         <div class="col-sm-1">
-            <a href="{$tsConfig.url}/perfil/{$p.user_name}"><img class="avatar-img" src="{$tsConfig.url}/files/avatar/{$p.p_user_pub}_50.jpg"></a>
+            <a href="{$tsConfig.url}/perfil/{$p.user_name}">
+                <img class="avatar-img" src="{$tsConfig.url}/files/avatar/{$p.p_user_pub}_120.jpg">
+            </a>
         </div>
         <div class="col-sm-11 nr-estatu">
-            <div class="float-right">
-                <div class="float-left" style="text-transform: inherit; color: grey; font-size: 1em; padding: 0.2em 1em;"><i class="far fa-clock"></i> {$p.p_date|fecha}</div>
+            <div class="float-right">                
                 <div class="dropdown float-right">
                     <button class="btn btn-light" type="button" id="OpcionStatu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v"></i>
@@ -77,26 +46,25 @@
                     </div>
                 </div>
             </div>
-            <h6><b><a href="{$tsConfig.url}/perfil/{$p.user_name}">{if $p.user_name == $tsUser->nick}Yo{else}{$p.user_name}{/if}</a></b></h6>
-            <p style="margin-bottom:0px;">{$p.p_body|quot}</p>
+            <h6><b><a href="{$tsConfig.url}/perfil/{$p.user_name}">{if $p.user_name == $tsUser->nick}{$tsUser->nick}{else}{$p.user_name}{/if}</a></b>
+            <small class="d-block text-muted" style="font-size: 9px;"><i class="far fa-clock"></i> {$p.p_date|fecha}</small></h6>
+            <p style="font-size:16px; margin-bottom:0px;">{$p.p_body|quot}</p>
             {if $p.p_type != 1}
             <div class="mvm clearfix">
                 {if $p.p_type == 2}
-                <a href="#" onclick="muro.load_atta('foto', '{$p.a_url}', this); return false" class="uiPhoto"><img src="{$p.a_img}"/></a>
+                <a href="#" onclick="muro.load_atta('foto', '{$p.a_url}', this); return false" class="uiPhoto"><img src="{$p.a_img}"/><i class="fas fa-expand-alt"></i></a>
                 {elseif $p.p_type == 3}
                 <div class="uiLink">
                     <div><a href="{$p.a_url}" target="_blank" class="a_blue"><strong>{$p.a_title}</strong></a></div>
                     <a href="{$p.a_url}" target="_blank" class="a_blue">{$p.a_url}</a>
                 </div>
                 {elseif $p.p_type == 4}
-                <a href="#" onclick="muro.load_atta('video','{$p.a_url}', this); return false;"class="uiVideoThumb">
-                    <img src="http://img.youtube.com/vi/{$p.a_url}/1.jpg" width="130" height="97"/>
-                    <i></i>
-                </a>
-                <div class="videoDesc">
-                    <strong><a href="http://www.youtube.com/watch?v={$p.a_url}" target="_blank" class="a_blue">{$p.a_title}</a></strong>
-                    <div style="margin-top:5px">
-                        {$p.a_desc}
+                <div class="uiVideoThumb" onclick="muro.load_atta('video','{$p.a_url}', this); return false;">
+                    <img src="https://img.youtube.com/vi/{$p.a_url}/0.jpg"/>
+                    <div class="videoDesc">
+                        <a href="https://www.youtube.com/watch?v={$p.a_url}" target="_blank">{$p.a_title}</a>
+                        <span>{$p.a_desc}</span>
+                        <i></i>
                     </div>
                 </div>
                 {/if}
@@ -120,7 +88,7 @@
                                 <div class="more_comments clearfix">
                                     <i></i>
                                     <a href="#" class="a_blue floatL" onclick="muro.more_comments({$p.pub_id}, this); return false">Ver los {$p.p_comments} comentarios</a>
-                                    <img width="16" height="11" src="http://static.ak.fbcdn.net/rsrc.php/yb/r/GsNJNwuI-UM.gif"/>
+                                    <img width="16" height="11" src="{$tsConfig.images}/loading_white.gif"/>
                                 </div>
                             </li>
                             {/if}
@@ -148,7 +116,6 @@
                                 <div class="col-sm-11">
                                     <textarea class="comentar form-control" title="Escribe un comentario..." id="cf_{$p.pub_id}" pid="{$p.pub_id}" name="add_wall_comment" onfocus="onfocus_input(this)" onblur="onblur_input(this)"></textarea>
                                 </div>
-                                <div class="clearBoth"></div>
                             </div>
                         </div>
                     </li>{/if}

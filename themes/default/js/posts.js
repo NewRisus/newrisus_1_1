@@ -523,3 +523,23 @@ function spoiler(obj){
 $(document).ready(function(){
     if($('.code').length > 0) $('#ver').show(); else $('#ver').remove();
 });
+/* EMOTICONOS */
+function moreEmoticons(margin){
+    var emos = $('#emoticons');
+    //
+    $('#loading').fadeIn(250); 
+    $.ajax({
+        type: 'GET',
+        url: global_data.url + '/emoticones.php',
+        data: 'ts=false',
+        success: function(h){
+            if(margin) $(emos).css({marginTop : '1em'})
+            $(emos).append(h);
+            $('#moreemofn').hide();
+            $('#loading').fadeOut(350); 
+        }
+    });   
+}
+function emoticones(){ 
+    var winpops=window.open(global_data.url + "/emoticones.php","","width=180px,height=500px,scrollbars,resizable");
+}

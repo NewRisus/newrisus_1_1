@@ -7,74 +7,45 @@
  * @author  PHPost Team
  */
 class tsAdmin {
+   /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
+   // ADMINISTRAR \\
 
+   /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+   /* getAdmins() */
+   function getAdmins() {
+      //
+      $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT `user_id`, `user_name` FROM `u_miembros` WHERE user_rango = \'1\' ORDER BY user_id');
+      //
+      $data = result_array($query);
+      //
+      return $data;
+   }
+   function getInst() {
+     //
+     $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT `stats_time_foundation`, `stats_time_upgrade` FROM `w_stats` WHERE stats_no = \'1\'');
+     //
+     $data = db_exec('fetch_row', $query);
+     //
+     return $data;
+   }
 
-    // ADMINISTRAR \\
-
-    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-    /*
-        getAdmins()
-    */
-    function getAdmins() {
-        //
-        $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT `user_id`, `user_name` FROM `u_miembros` WHERE user_rango = \'1\' ORDER BY user_id');
-        //
-        $data = result_array($query);
-        //
-        return $data;
-    }
-    function getInst() {
-        //
-        $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT `stats_time_foundation`, `stats_time_upgrade` FROM `w_stats` WHERE stats_no = \'1\'');
-        //
-        $data = db_exec('fetch_row', $query);
-        //
-        return $data;
-    }
-
-    /*
-
-    getVersions()
-
-    */
-
-    function getVersions()
-
-    {
-
-
-
-        //
-
-        $data['php'] = PHP_VERSION;
-
-        //
-
-        $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT VERSION()');
-
-        $data['mysql'] = db_exec('fetch_row', $query);
-
-
-
-        //
-
-        $data['server'] = $_SERVER['SERVER_SOFTWARE'];
-
-        //
-
-        $temp = @gd_info();
-
-        $data['gd'] = $temp['GD Version'];
-
-        //
-
-        return $data;
-
-    }
+   /* getVersions() */
+   function getVersions() {
+      //
+      $data['php'] = PHP_VERSION;
+      //
+      $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT VERSION()');
+      $data['mysql'] = db_exec('fetch_row', $query);
+      //
+      $data['server'] = $_SERVER['SERVER_SOFTWARE'];
+      //
+      $temp = @gd_info();
+      $data['gd'] = $temp['GD Version'];
+      //
+      return $data;
+   }
 
     /*
 
@@ -143,25 +114,18 @@ class tsAdmin {
             'portal' => empty($_POST['portal']) ? 0 : 1,
 
             'live' => empty($_POST['live']) ? 0 : 1,
-
             'max_nots' => $tsCore->setSecure($_POST['max_nots']),
-
             'max_acts' => $_POST['max_acts'],
-
             'max_posts' => $tsCore->setSecure($_POST['max_posts']),
-
             'max_com' => $tsCore->setSecure($_POST['max_com']),
-
             'sump' => empty($_POST['sump']) ? 0 : 1,
-
             'newr' => empty($_POST['newr']) ? 0 : 1,
-
+            'recaptcha' => empty($_POST['recaptcha']) ? 0 : 1,
             'pkey' => $tsCore->setSecure($_POST['pkey']),
-
             'skey' => $tsCore->setSecure($_POST['skey']),
-
+            'pkey3' => $tsCore->setSecure($_POST['pkey3']),
+            'skey3' => $tsCore->setSecure($_POST['skey3']),
             'codes' => $tsCore->setSecure($tsCore->parseBadWords($_POST['codes'])),
-
         );
 
         // UPDATE
@@ -196,7 +160,7 @@ class tsAdmin {
 
             $c['portal'] . '\', `c_allow_live` = \'' . $c['live'] . '\', `offline` = \'' . $c['offline'] .
 
-            '\', `offline_message` = \'' . $c['offline_message'] . '\', `pkey` = \'' . $c['pkey'] . '\', `skey` = \'' . $c['skey'] . '\', `codes` = \'' . $c['codes'] . '\' WHERE `tscript_id` = \'1\''))
+            '\', `offline_message` = \'' . $c['offline_message'] . '\', `c_recaptcha` = \'' . $c['recaptcha'] . '\', `pkey` = \'' . $c['pkey'] . '\', `skey` = \'' . $c['skey'] . '\', `pkey3` = \'' . $c['pkey3'] . '\', `skey3` = \'' . $c['skey3'] . '\', `codes` = \'' . $c['codes'] . '\' WHERE `tscript_id` = \'1\''))
 
             return true;
 
@@ -2779,473 +2743,164 @@ class tsAdmin {
 
 
 
-    function getBlock()
-
-    {
-
-        return db_exec('fetch_assoc', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT type, value, reason FROM w_blacklist WHERE id = \'' .
-
-            (int)$_GET['id'] . '\' LIMIT 1'));
-
-    }
-
-
-
-    function saveBlock()
-
-    {
-
-        global $tsCore, $tsUser;
-
-
-
-        if (empty($_POST['value']) || empty($_POST['type']))
-
-        {
-
-            return 'Debe rellenar todos los campos';
-
-        } else
-
-        {
-
-            if ($_POST['type'] == 1 && $_POST['value'] == $_SERVER['REMOTE_ADDR'])
-
-                return 'No puedes bloquear tu propia IP';
-
-            if (!db_exec('num_rows', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT id FROM w_blacklist WHERE type = \'' . (int)
-
-                $_POST['type'] . '\' && value = \'' . $tsCore->setSecure($_POST['value']) . '\'')))
-
-            {
-
-                if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE w_blacklist SET type = \'' . (int)$_POST['type'] . '\', value = \'' .
-
-                    $tsCore->setSecure($_POST['value']) . '\', author = \'' . $tsUser->uid . '\' WHERE id = \'' .
-
-                    (int)$_GET['id'] . '\''))
-
-                    return true;
-
-            } else
-
-                return 'Ya existe un bloqueo as&iacute;';
-
-        }
-
-    }
-
-
-
-    function newBlock()
-
-    {
-
-        global $tsCore, $tsUser;
-
-
-
-        if (empty($_POST['value']) || empty($_POST['type']) || empty($_POST['reason']))
-
-        {
-
-            return 'Rellene todos los campos';
-
-        } else
-
-        {
-
-            if ($_POST['type'] == 1 && $_POST['value'] == $_SERVER['REMOTE_ADDR'])
-
-                return 'No puedes bloquear tu propia IP';
-
-            if (!db_exec('num_rows', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT id FROM w_blacklist WHERE type = \'' . (int)
-
-                $_POST['type'] . '\' && value = \'' . $tsCore->setSecure($_POST['value']) . '\'')))
-
-            {
-
-                if (db_exec(array(__FILE__, __LINE__), 'query', 'INSERT INTO w_blacklist (type, value, reason, author, date) VALUES (\'' .
-
-                    (int)$_POST['type'] . '\', \'' . $tsCore->setSecure($_POST['value']) . '\', \'' .
-
-                    $tsCore->setSecure($_POST['reason']) . '\', \'' . $tsUser->uid . '\', \'' . time
-
-                    () . '\')'))
-
-                    return true;
-
-            } else
-
-                return 'Ya existe un bloqueo as&iacute;';
-
-        }
-
-    }
-
-
-
-    function deleteBlock()
-
-    {
-
-
-
-        if (db_exec(array(__FILE__, __LINE__), 'query', 'DELETE FROM w_blacklist WHERE id = \'' . (int)$_POST['bid'] . '\''))
-
-            return '1: Bloqueo retirado';
-
-        else
-
-            return '0: Hubo un error al borrar';
-
-
-
-    }
-
-
-
-    /****************** ADMINISTRACIÓN DE LISTA NEGRA ******************/
-
-
-
-    function getBadWords()
-
-    {
-
-        global $tsCore;
-
-        //
-
-        $max = 20; // MAXIMO A MOSTRAR
-
-        $limit = $tsCore->setPageLimit($max, true);
-
-        //
-
-        $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT u.user_id, u.user_name, bw.* FROM w_badwords AS bw LEFT JOIN u_miembros AS u ON bw.author = u.user_id ORDER BY bw.wid DESC LIMIT ' .
-
-            $limit);
-
-        //
-
-        $data['data'] = result_array($query);
-
-
-
-        // PAGINAS
-
-        $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT COUNT(*) FROM w_badwords');
-
-        list($total) = db_exec('fetch_row', $query);
-
-
-
-        $data['pages'] = $tsCore->pageIndex($tsCore->settings['url'] .
-
-            "/admin/badwords?", $_GET['s'], $total, $max);
-
-        //
-
-        return $data;
-
-    }
-
-
-
-    function getBadWord()
-
-    {
-
-        return db_exec('fetch_assoc', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT * FROM w_badwords WHERE wid = \'' .
-
-            (int)$_GET['id'] . '\' LIMIT 1'));
-
-    }
-
-
-
-    function saveBadWord()
-
-    {
-
-        global $tsCore, $tsUser;
-
-
-
-        $method = empty($_POST['method']) ? 0 : 1;
-
-        $type = empty($_POST['type']) ? 0 : 1;
-
-        if (empty($_POST['before']) || empty($_POST['after']))
-
-        {
-
-            return 'Rellene todos los campos';
-
-        } else
-
-        {
-
-            if (!db_exec('num_rows', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT wid FROM w_badwords WHERE LOWER(word) = \'' .
-
-                $tsCore->setSecure(strtolower($_POST['before'])) . '\' && LOWER(swop) = \'' . $tsCore->
-
-                setSecure(strtolower($_POST['after'])) . '\'')))
-
-            {
-
-                if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE `w_badwords` SET method = \'' . $method . '\', type = \'' .
-
-                    (int)$type . '\', word = \'' . $tsCore->setSecure($_POST['before']) . '\', swop = \'' .
-
-                    $tsCore->setSecure($_POST['after']) . '\', author = \'' . $tsUser->uid . '\' WHERE wid = \'' .
-
-                    (int)$_GET['id'] . '\''))
-
-                    return true;
-
-                else
-
-                    return 'Error al guardar';
-
-            } else
-
-                return 'Ya existe un filtro as&iacute;';
-
-        }
-
-    }
-
-
-
-    function newBadWord()
-
-    {
-
-        global $tsCore, $tsUser;
-
-
-
-        $method = empty($_POST['method']) ? 0 : 1;
-
-        $type = empty($_POST['type']) ? 0 : 1;
-
-        if (empty($_POST['before']) || empty($_POST['after']) || empty($_POST['reason']))
-
-        {
-
-            return 'Rellene todos los campos';
-
-        } else
-
-        {
-
-            if (!db_exec('num_rows', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT wid FROM w_badwords WHERE LOWER(word) = \'' .
-
-                $tsCore->setSecure(strtolower($_POST['before'])) . '\' && LOWER(swop) = \'' . $tsCore->
-
-                setSecure(strtolower($_POST['after'])) . '\'')))
-
-            {
-
-                if (db_exec(array(__FILE__, __LINE__), 'query', 'INSERT INTO w_badwords (word, swop, method, type, author, reason, date) VALUES (\'' .
-
-                    $tsCore->setSecure($_POST['before']) . '\', \'' . $tsCore->setSecure($_POST['after']) .
-
-                    '\', \'' . (int)$method . '\', \'' . (int)$type . '\', \'' . $tsUser->uid . '\', \'' .
-
-                    $tsCore->setSecure($_POST['reason']) . '\', \'' . time() . '\')'))
-
-                    return true;
-
-                else
-
-                    return 'Error al agregar';
-
-            } else
-
-                return 'Ya existe un filtro as&iacute;';
-
-        }
-
-    }
-
-
-
-    function deleteBadWord()
-
-    {
-
-
-
-        if (db_exec(array(__FILE__, __LINE__), 'query', 'DELETE FROM w_badwords WHERE wid = \'' . (int)$_POST['wid'] . '\''))
-
-            return '1: Filtro retirado';
-
-        else
-
-            return '0: Hubo un error al borrar';
-
-
-
-    }
-
-
-
-    /****************** ADMINISTRACIÓN DE ESTADÍSTICAS ******************/
-
-
-
-    function GetAdminStats()
-
-    {
-
-        $num = db_exec('fetch_assoc', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT 
-
-        (SELECT count(foto_id) FROM f_fotos WHERE f_status = \'2\') as fotos_eliminadas, 
-
-        (SELECT count(foto_id) FROM f_fotos WHERE f_status = \'1\') as fotos_ocultas, 
-
-        (SELECT count(foto_id) FROM f_fotos WHERE f_status = \'0\') as fotos_visibles, 
-
-        (SELECT count(post_id) FROM p_posts WHERE post_status = \'0\') as posts_visibles, 
-
-        (SELECT count(post_id) FROM p_posts WHERE post_status = \'1\') as posts_ocultos, 
-
-        (SELECT count(post_id) FROM p_posts  WHERE post_status = \'2\') as posts_eliminados, 
-
-        (SELECT count(post_id) FROM p_posts  WHERE post_status = \'3\') as posts_revision, 
-
-        (SELECT count(cid) FROM p_comentarios WHERE c_status = \'0\') as comentarios_posts_visibles, 
-
-        (SELECT count(cid) FROM p_comentarios WHERE c_status = \'1\') as comentarios_posts_ocultos, 
-
-        (SELECT count(user_id) FROM u_miembros WHERE user_activo = \'1\') as usuarios_activos, 
-
-        (SELECT count(user_id) FROM u_miembros WHERE user_activo = \'0\' ) as usuarios_inactivos, 
-
-        (SELECT count(user_id) FROM u_miembros WHERE user_baneado = \'1\' ) as usuarios_baneados, 
-
-        (SELECT count(cid) FROM f_comentarios) as comentarios_fotos_total, 
-
-        (SELECT count(follow_id) FROM u_follows WHERE f_type  = \'1\' ) AS usuarios_follows,
-
-        (SELECT count(follow_id) FROM u_follows WHERE f_type  = \'2\' ) AS posts_follows,
-
-        (SELECT count(follow_id) FROM u_follows WHERE f_type  = \'3\' ) AS posts_compartidos,
-
-        (SELECT count(fav_id) FROM p_favoritos) AS posts_favoritos,  
-
-        (SELECT count(mr_id) FROM u_respuestas) AS usuarios_respuestas,
-
-        (SELECT count(mp_id) FROM u_mensajes) AS mensajes_total, 
-
-        (SELECT count(mp_id) FROM u_mensajes WHERE mp_del_to = \'1\') AS mensajes_de_eliminados,
-
-        (SELECT count(mp_id) FROM u_mensajes WHERE mp_del_from = \'1\') AS mensajes_para_eliminados,
-
-        (SELECT count(bid) FROM p_borradores) AS posts_borradores,
-
-        (SELECT count(bid) FROM u_bloqueos) AS usuarios_bloqueados, 
-
-        (SELECT count(bid) FROM u_bloqueos) AS usuarios_bloqueados,
-
-        (SELECT count(medal_id) FROM w_medallas WHERE m_type = \'1\') AS medallas_usuarios,
-
-        (SELECT count(medal_id) FROM w_medallas WHERE m_type = \'2\') AS medallas_posts,
-
-        (SELECT count(medal_id) FROM w_medallas WHERE m_type = \'3\') AS medallas_fotos,
-
-        (SELECT count(id) FROM w_medallas_assign) AS medallas_asignadas, 
-
-        (SELECT count(aid) FROM w_afiliados WHERE a_active = \'1\') AS afiliados_activos, 
-
-        (SELECT count(aid) FROM w_afiliados WHERE a_active = \'0\') AS afiliados_inactivos,
-
-        (SELECT count(pub_id) FROM u_muro) AS muro_estados, 
-
-        (SELECT count(cid) FROM u_muro_comentarios) AS muro_comentarios
-
-        '));
-
-
-
-        $num['usuarios_total'] = $num['usuarios_activos'] + $num['usuarios_inactivos'] +
-
-            $num['usuarios_baneados'];
-
-        $num['seguidos_total'] = $num['posts_follows'] + $num['usuarios_follows'];
-
-        $num['muro_total'] = $num['muro_estados'] + $num['muro_comentarios'];
-
-        $num['afiliados_total'] = $num['afiliados_activos'] + $num['afiliados_inactivos'];
-
-        $num['posts_total'] = $num['posts_visibles'] + $num['posts_ocultos'] + $num['posts_eliminados'];
-
-        $num['comentarios_posts_total'] = $num['comentarios_posts_visibles'] + $num['comentarios_posts_ocultos'];
-
-        $num['medallas_total'] = $num['medallas_usuarios'] + $num['medallas_posts'] + $num['medallas_fotos'];
-
-        $num['fotos_total'] = $num['fotos_visibles'] + $num['fotos_ocultas'] + $num['fotos_eliminadas'];
-
-
-
-        return $num;
-
-    }
-
-
-
-    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-    /*
-    gethCats()
-    */
-    function gethCats() { 
-        $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT * FROM p_hcats ORDER BY id DESC');
-        $data = result_array($query);
-        return $data;
-    }
-    function newhCat() {
-        global $tsCore;
-        //
-        //$db = $this->getDBtypes();
-        // VALORES
-        $name = $tsCore->setSecure($tsCore->parseBadWords($_POST['h_nombre']));
-        if (db_exec(array(__FILE__, __LINE__), 'query', 'INSERT INTO `p_hcats` (name) VALUES (\'' . $name . '\')'))
-            return true;
-        else
-            exit( show_error('Error al ejecutar la consulta de la l&iacute;nea '.__LINE__.' de '.__FILE__.'.', 'db') );
-    }
-    function gethCat($id) {
-        //
-        //$db = $this->getDBtypes();
-        //
-        $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT * FROM p_hcats WHERE id = \'' . (int)$id . '\' LIMIT 1');
-        $data = db_exec('fetch_assoc', $query);
-        return $data;
-    }
-    function savehCat($id) {
-        global $tsCore;
-        //
-        // VALORES
-        $name = $tsCore->setSecure($tsCore->parseBadWords($_POST['h_nombre']));
-
-        // INSERTS
-        if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE `p_hcats` SET name = \'' . $name . '\' WHERE id = \''.(int)$id.'\''))
-            return true;
-        else
-            exit( show_error('Error al ejecutar la consulta de la l&iacute;nea '.__LINE__.' de '.__FILE__.'.', 'db') );
-    }
-    function deletehCat($id) {
-        if (db_exec(array(__FILE__, __LINE__), 'query', 'DELETE FROM `p_hcats` WHERE id = \''.(int)$id.'\''))
-            return true;
-        else
-            exit( show_error('Error al ejecutar la consulta de la l&iacute;nea '.__LINE__.' de '.__FILE__.'.', 'db') );
-    }
-
-    /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-
-
+   function getBlock() {
+      return db_exec('fetch_assoc', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT type, value, reason FROM w_blacklist WHERE id = \'' . (int)$_GET['id'] . '\' LIMIT 1'));
+   }
+   function saveBlock() {
+      global $tsCore, $tsUser;
+      if (empty($_POST['value']) || empty($_POST['type'])) {
+         return 'Debe rellenar todos los campos';
+      } else {
+         if ($_POST['type'] == 1 && $_POST['value'] == $_SERVER['REMOTE_ADDR']) return 'No puedes bloquear tu propia IP';
+         if (!db_exec('num_rows', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT id FROM w_blacklist WHERE type = \'' . (int)$_POST['type'] . '\' && value = \'' . $tsCore->setSecure($_POST['value']) . '\''))) {
+            if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE w_blacklist SET type = \'' . (int)$_POST['type'] . '\', value = \'' . $tsCore->setSecure($_POST['value']) . '\', author = \'' . $tsUser->uid . '\' WHERE id = \'' . (int)$_GET['id'] . '\'')) return true;
+         } else return 'Ya existe un bloqueo as&iacute;';
+      }
+   }
+   function newBlock() {
+      global $tsCore, $tsUser;
+      if (empty($_POST['value']) || empty($_POST['type']) || empty($_POST['reason'])) {
+         return 'Rellene todos los campos';
+      } else {
+         if ($_POST['type'] == 1 && $_POST['value'] == $_SERVER['REMOTE_ADDR']) return 'No puedes bloquear tu propia IP';
+         if (!db_exec('num_rows', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT id FROM w_blacklist WHERE type = \'' . (int)$_POST['type'] . '\' && value = \'' . $tsCore->setSecure($_POST['value']) . '\''))) {
+            if (db_exec(array(__FILE__, __LINE__), 'query', 'INSERT INTO w_blacklist (type, value, reason, author, date) VALUES (\'' . (int)$_POST['type'] . '\', \'' . $tsCore->setSecure($_POST['value']) . '\', \'' . $tsCore->setSecure($_POST['reason']) . '\', \'' . $tsUser->uid . '\', \'' . time() . '\')')) return true;
+         } else return 'Ya existe un bloqueo as&iacute;';
+      }
+   }
+   function deleteBlock() {
+      if (db_exec(array(__FILE__, __LINE__), 'query', 'DELETE FROM w_blacklist WHERE id = \'' . (int)$_POST['bid'] . '\'')) return '1: Bloqueo retirado';
+      else return '0: Hubo un error al borrar';
+   }
+   /****************** ADMINISTRACIÓN DE LISTA NEGRA ******************/
+   function getBadWords() {
+      global $tsCore;
+      //
+      $max = 20; // MAXIMO A MOSTRAR
+      $limit = $tsCore->setPageLimit($max, true);
+      //
+      $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT u.user_id, u.user_name, bw.* FROM w_badwords AS bw LEFT JOIN u_miembros AS u ON bw.author = u.user_id ORDER BY bw.wid DESC LIMIT ' . $limit);
+      //
+      $data['data'] = result_array($query);
+      // PAGINAS
+      $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT COUNT(*) FROM w_badwords');
+      list($total) = db_exec('fetch_row', $query);
+      $data['pages'] = $tsCore->pageIndex($tsCore->settings['url'] . "/admin/badwords?", $_GET['s'], $total, $max);
+      //
+      return $data;
+   }
+   function getBadWord() {
+      return db_exec('fetch_assoc', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT * FROM w_badwords WHERE wid = \'' . (int)$_GET['id'] . '\' LIMIT 1'));
+   }
+   function saveBadWord() {
+      global $tsCore, $tsUser;
+      $method = empty($_POST['method']) ? 0 : 1;
+      $type = empty($_POST['type']) ? 0 : 1;
+      if (empty($_POST['before']) || empty($_POST['after'])) {
+         return 'Rellene todos los campos';
+      } else {
+         if (!db_exec('num_rows', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT wid FROM w_badwords WHERE LOWER(word) = \'' . $tsCore->setSecure(strtolower($_POST['before'])) . '\' && LOWER(swop) = \'' . $tsCore->setSecure(strtolower($_POST['after'])) . '\''))) {
+            if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE `w_badwords` SET method = \'' . $method . '\', type = \'' . (int)$type . '\', word = \'' . $tsCore->setSecure($_POST['before']) . '\', swop = \'' . $tsCore->setSecure($_POST['after']) . '\', author = \'' . $tsUser->uid . '\' WHERE wid = \'' . (int)$_GET['id'] . '\'')) return true;
+            else return 'Error al guardar';
+         } else return 'Ya existe un filtro as&iacute;';
+      }
+   }
+   function newBadWord() {
+      global $tsCore, $tsUser;
+      $method = empty($_POST['method']) ? 0 : 1;
+      $type = empty($_POST['type']) ? 0 : 1;
+      if (empty($_POST['before']) || empty($_POST['after']) || empty($_POST['reason'])) {
+         return 'Rellene todos los campos';
+      } else {
+         if (!db_exec('num_rows', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT wid FROM w_badwords WHERE LOWER(word) = \'' . $tsCore->setSecure(strtolower($_POST['before'])) . '\' && LOWER(swop) = \'' . $tsCore->setSecure(strtolower($_POST['after'])) . '\''))) {
+            if (db_exec(array(__FILE__, __LINE__), 'query', 'INSERT INTO w_badwords (word, swop, method, type, author, reason, date) VALUES (\'' . $tsCore->setSecure($_POST['before']) . '\', \'' . $tsCore->setSecure($_POST['after']) . '\', \'' . (int)$method . '\', \'' . (int)$type . '\', \'' . $tsUser->uid . '\', \'' . $tsCore->setSecure($_POST['reason']) . '\', \'' . time() . '\')')) return true;
+            else return 'Error al agregar';
+         } else return 'Ya existe un filtro as&iacute;';
+      }
+   }
+   function deleteBadWord() {
+      if (db_exec(array(__FILE__, __LINE__), 'query', 'DELETE FROM w_badwords WHERE wid = \'' . (int)$_POST['wid'] . '\'')) return '1: Filtro retirado';
+      else return '0: Hubo un error al borrar';
+   }
+   /****************** ADMINISTRACIÓN DE ESTADÍSTICAS ******************/
+   function GetAdminStats() {
+      $num = db_exec('fetch_assoc', db_exec(array(__FILE__, __LINE__), 'query', 'SELECT
+         (SELECT count(foto_id) FROM f_fotos WHERE f_status = \'2\') as fotos_eliminadas,
+         (SELECT count(foto_id) FROM f_fotos WHERE f_status = \'1\') as fotos_ocultas,
+         (SELECT count(foto_id) FROM f_fotos WHERE f_status = \'0\') as fotos_visibles,
+         (SELECT count(post_id) FROM p_posts WHERE post_status = \'0\') as posts_visibles,
+         (SELECT count(post_id) FROM p_posts WHERE post_status = \'1\') as posts_ocultos,
+         (SELECT count(post_id) FROM p_posts  WHERE post_status = \'2\') as posts_eliminados,
+         (SELECT count(post_id) FROM p_posts  WHERE post_status = \'3\') as posts_revision,
+         (SELECT count(cid) FROM p_comentarios WHERE c_status = \'0\') as comentarios_posts_visibles,
+         (SELECT count(cid) FROM p_comentarios WHERE c_status = \'1\') as comentarios_posts_ocultos,
+         (SELECT count(user_id) FROM u_miembros WHERE user_activo = \'1\') as usuarios_activos,
+         (SELECT count(user_id) FROM u_miembros WHERE user_activo = \'0\' ) as usuarios_inactivos,
+         (SELECT count(user_id) FROM u_miembros WHERE user_baneado = \'1\' ) as usuarios_baneados,
+         (SELECT count(cid) FROM f_comentarios) as comentarios_fotos_total,
+         (SELECT count(follow_id) FROM u_follows WHERE f_type  = \'1\' ) AS usuarios_follows, 
+         (SELECT count(follow_id) FROM u_follows WHERE f_type  = \'2\' ) AS posts_follows, 
+         (SELECT count(follow_id) FROM u_follows WHERE f_type  = \'3\' ) AS posts_compartidos, 
+         (SELECT count(fav_id) FROM p_favoritos) AS posts_favoritos, 
+         (SELECT count(mr_id) FROM u_respuestas) AS usuarios_respuestas, 
+         (SELECT count(mp_id) FROM u_mensajes) AS mensajes_total,
+         (SELECT count(mp_id) FROM u_mensajes WHERE mp_del_to = \'1\') AS mensajes_de_eliminados,
+         (SELECT count(mp_id) FROM u_mensajes WHERE mp_del_from = \'1\') AS mensajes_para_eliminados,
+         (SELECT count(bid) FROM p_borradores) AS posts_borradores,
+         (SELECT count(bid) FROM u_bloqueos) AS usuarios_bloqueados,
+         (SELECT count(bid) FROM u_bloqueos) AS usuarios_bloqueados,
+         (SELECT count(medal_id) FROM w_medallas WHERE m_type = \'1\') AS medallas_usuarios,
+         (SELECT count(medal_id) FROM w_medallas WHERE m_type = \'2\') AS medallas_posts,
+         (SELECT count(medal_id) FROM w_medallas WHERE m_type = \'3\') AS medallas_fotos,
+         (SELECT count(id) FROM w_medallas_assign) AS medallas_asignadas,
+         (SELECT count(aid) FROM w_afiliados WHERE a_active = \'1\') AS afiliados_activos,
+         (SELECT count(aid) FROM w_afiliados WHERE a_active = \'0\') AS afiliados_inactivos,
+         (SELECT count(pub_id) FROM u_muro) AS muro_estados, 
+         (SELECT count(cid) FROM u_muro_comentarios) AS muro_comentarios
+      '));
+      $num['usuarios_total'] = $num['usuarios_activos'] + $num['usuarios_inactivos'] + $num['usuarios_baneados'];
+      $num['seguidos_total'] = $num['posts_follows'] + $num['usuarios_follows'];
+      $num['muro_total'] = $num['muro_estados'] + $num['muro_comentarios'];
+      $num['afiliados_total'] = $num['afiliados_activos'] + $num['afiliados_inactivos'];
+      $num['posts_total'] = $num['posts_visibles'] + $num['posts_ocultos'] + $num['posts_eliminados'];
+      $num['comentarios_posts_total'] = $num['comentarios_posts_visibles'] + $num['comentarios_posts_ocultos'];
+      $num['medallas_total'] = $num['medallas_usuarios'] + $num['medallas_posts'] + $num['medallas_fotos'];
+      $num['fotos_total'] = $num['fotos_visibles'] + $num['fotos_ocultas'] + $num['fotos_eliminadas'];
+      return $num;
+   }
+   /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+   /* gethCats() */
+   function gethCats() { 
+      $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT * FROM p_hcats ORDER BY id DESC');
+      $data = result_array($query);
+      return $data;
+   }
+   function newhCat() {
+      global $tsCore;
+      // VALORES
+      $name = $tsCore->setSecure($tsCore->parseBadWords($_POST['h_nombre']));
+      if (db_exec(array(__FILE__, __LINE__), 'query', 'INSERT INTO `p_hcats` (name) VALUES (\'' . $name . '\')')) return true;
+      else exit( show_error('Error al ejecutar la consulta de la l&iacute;nea '.__LINE__.' de '.__FILE__.'.', 'db') );
+   }
+   function gethCat($id) {
+      //
+      $query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT * FROM p_hcats WHERE id = \'' . (int)$id . '\' LIMIT 1');
+      $data = db_exec('fetch_assoc', $query);
+      return $data;
+   }
+   function savehCat($id) {
+      global $tsCore;
+      // VALORES
+      $name = $tsCore->setSecure($tsCore->parseBadWords($_POST['h_nombre']));
+      // INSERTS
+       if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE `p_hcats` SET name = \'' . $name . '\' WHERE id = \''.(int)$id.'\'')) return true;
+       else exit( show_error('Error al ejecutar la consulta de la l&iacute;nea '.__LINE__.' de '.__FILE__.'.', 'db') );
+   }
+   function deletehCat($id) {
+      if (db_exec(array(__FILE__, __LINE__), 'query', 'DELETE FROM `p_hcats` WHERE id = \''.(int)$id.'\'')) return true;
+      else exit( show_error('Error al ejecutar la consulta de la l&iacute;nea '.__LINE__.' de '.__FILE__.'.', 'db') );
+   }
+
+   /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 }

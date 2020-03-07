@@ -182,12 +182,6 @@
     <div class="col-sm"></div>
 </div>
 
-
-
-
-
-
-
 {literal}
 <style>
 .nr-perfil-header {
@@ -267,12 +261,4 @@
 }
 </style>
 {/literal}
-
-
-
-
-
-
-<!-- ANTIGUO -->
-
-    
+<!-- ANTIGUO -->    
