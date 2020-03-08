@@ -459,6 +459,9 @@ var registro = {
             type: 'POST',
             url: global_data.url + '/registro-nuevo.php',
             data: params,
+            beforeSend: function() {
+               $('#load').show().html('<svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg><br><p>Creando perfil del usuario...</p>');
+            },
             success: function(h) {
                console.log(h);
                 //Si hubo algun error, recargo recaptcha
@@ -496,6 +499,7 @@ var registro = {
                      break;
                   case '1':
                   case '2':
+                     $('#load').hide();
                      $('#RegistroForm').hide();
                      $('#boxms').html(h.substring(strpos(h, ':') + 2));
                      $('#listo').append('<a href="#" class="mt-3 btn btn-success" onclick="redireccionar();">Aceptar</a>');
@@ -504,13 +508,13 @@ var registro = {
                $('#loading').fadeOut(350);
             },
             error: function() {
+               $('#load').hide();
                mydialog.error_500("registro.submit()");
                $('#loading').fadeOut(350);
 
             },
             complete: function() {
-               if (registro.dialog)
-                  mydialog.procesando_fin();
+               if (registro.dialog) mydialog.procesando_fin();
                $('#loading').fadeOut(450);
             }
          });
@@ -518,5 +522,6 @@ var registro = {
    }
    // REDIRECCIONAR
 function redireccionar() {
+   $('#load').show().html('<svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg><br><p>Redireccionando a tu cuenta...</p>');
    location.href = global_data.url + '/cuenta/'
 }

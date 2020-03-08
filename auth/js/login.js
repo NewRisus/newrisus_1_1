@@ -8,68 +8,38 @@ function regresar(name) {
 /* Buscamos el parámetros | Mostramos URL | Si se usa en xampp | Reemplazamos /login por nada */
 var Redireccionar = regresar('NewRisus'), MyUrl = window.location.origin, Local = window.location.pathname, l2 = Local.replace('/login', '');
 
-function login_ajax(form, connect){
-	var el = new Array(), params = '';
-	if (form != 'logueo-form') {
-		el['nick'] = $('#login_box #nickname');
-		el['pass'] = $('#login_box #password');
-		el['error'] = $('#login_box .auth-login-error');
-		el['cargando'] = $('#login_box #login_cargando');
-		el['cuerpo'] = $('#login_box .auth-login-cuerpo');
-		el['button'] = $('#login_box input[type="submit"]');
-	}
-	if (typeof connect == 'undefined')  {
-		if (empty($(el['nick']).val())) {
-			$(el['nick']).focus();
-			return;
-		}
-		if (empty($(el['pass']).val())) {
-			$(el['pass']).focus();
-			return;
-		}
-		$(el['error']).css('display', 'none');
-		$(el['cargando']).css('display', 'block');
-		$(el['button']).attr('disabled', 'disabled').addClass('disabled');
-		var remember = ($('#rem').is(':checked')) ? 'true' : 'false';
-		params = 'nick='+encodeURIComponent($(el['nick']).val())+'&pass='+encodeURIComponent($(el['pass']).val())+'&rem='+remember;
-	}
-   $('#loading').fadeIn(250);    
-	$('.auth-login-cargando').css('display', 'block');
+function login__web(){
+	if ( empty( $('#nickname').val() ) ) { $('#nickname').focus(); return; }
+	if ( empty( $('#password').val() ) ) { $('#password').focus(); return; }
+	var rem = ($('#rem').is(':checked')) ? 'true' : 'false',
+	style = {'background': '#F003','color': '#F00D','padding': '8px 12px','display': 'block','margin-bottom': '10px'};
+	$('#load').html('<div id="load"><svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg><br><p>Cargando usuario...</p></div>').fadeIn(250);
 	$.ajax({
-		type: 'post', 
-		url: global_data.url + '/login-user.php', 
-		cache: false, 
-		data: params,
-		success: function (h) {
-			switch(h.charAt(0)){
-				case '0':
-					$(el['error']).html(h.substring(3)).show();
-					$(el['nick']).focus();
-					$(el['button']).removeAttr('disabled').removeClass('disabled');
-					break;
-				case '1':
-					(Redireccionar != '') ? location.href = atob(Redireccionar) : (window.location.pathname) ? location.href = MyUrl + l2 : location.href = MyUrl;
-               $('#loading').fadeOut(350);
-					break;
-				case '2':
-					$(el['cuerpo']).css('text-align', 'center').css('line-height', '150%').html(h.substring(3));
-				break;
-			}
-		},
-		error: function() {
-			$(el['error']).html(lang['error procesar']).show();
-		},
-		complete: function(){
-			$('.auth-login-cargando').css('display', 'none');
-			$('#loading').fadeOut(250);
+		type: 'POST',
+		url: global_data.url + '/login-user.php',
+		cache: false,
+		data: 'nick='+encodeURIComponent($('#nickname').val())+'&pass='+encodeURIComponent($('#password').val())+'&rem='+rem
+	}).done(function(resp) {
+		switch(resp.charAt(0)) {
+			case '0': 
+				$('.auth-login-error').html(resp.substring(3)).css(style);
+				$('#nickname').focus();
+				$('#load').remove();
+			break;
+			case '1':
+				(Redireccionar != '') ? location.href = atob(Redireccionar) : (window.location.pathname) ? location.href = MyUrl + l2 : location.href = MyUrl;
+            $('#loading').fadeOut(350);
+			break;
+			case '2':
+				$('.login_cuerpo').css({'text-align': 'center','line-height': '150%'}).html(resp.substring(3));
+			break;
 		}
+	}).fail(function(data) {
+		$('.auth-login-error').html('Error al processar!').css(style);
+		$('#load').remove();
+	}).always(function(h) {
+		$('#load').css('background-color', '#285e61CC');
+		$('#load p').html('Redireccionando a <b>'+global_data.s_title+'</b>');
+		$('#loading').fadeOut(250);
 	});
-}
-
-$(document).ready(function(){
-	$('#nickname').focus();
-});	
-
-function AuthLogin(b){
-	$('#ver'+b).hide();
 }

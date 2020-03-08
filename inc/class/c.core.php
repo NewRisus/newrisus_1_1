@@ -10,11 +10,10 @@ class tsCore {
 	var $settings;		// CONFIGURACIONES DEL SITIO
 	var $querys = 0;	// CONSULTAS
 
-	function __construct()
-    {
+	function __construct() {
 		// CARGANDO CONFIGURACIONES
 		$this->settings = $this->getSettings();
-		$this->settings['domain'] = str_replace('http://','',$this->settings['url']);
+		$this->settings['domain'] = str_replace(array('http://', 'https://'),'',$this->settings['url']);
 		$this->settings['categorias'] = $this->getCategorias();
       $this->settings['default'] = $this->settings['url'].'/themes/default';
 		$this->settings['tema'] = $this->getTema();
@@ -65,7 +64,7 @@ class tsCore {
 		$query = db_exec(array(__FILE__, __LINE__), 'query', 'SELECT * FROM w_temas WHERE tid = '.$this->settings['tema_id'].' LIMIT 1');
 		//
 		$data = db_exec('fetch_assoc', $query);
-        $data['t_url'] = $this->settings['url'] . '/themes/' . $data['t_path'];
+      $data['t_url'] = $this->settings['url'] . '/themes/' . $data['t_path'];
 		//
 		return $data;
 	}
@@ -96,15 +95,12 @@ class tsCore {
     
     // FUNCIÓN CONCRETA PARA CENSURAR
 	
-	function parseBadWords($c, $s = FALSE) 
-    {
-        $q = result_array(db_exec(array(__FILE__, __LINE__), 'query', 'SELECT word, swop, method, type FROM w_badwords '.($s == true ? '' : ' WHERE type = \'0\'')));
-        
-        foreach($q AS $badword) 
-        {
-        $c = str_ireplace((empty($badword['method']) ? $badword['word'] : $badword['word'].' '),($badword['type'] == 1 ? '<img class="qtip" title="'.$badword['word'].'" src="'.$badword['swop'].'" align="absmiddle"/>' : $badword['swop'].' '),$c);
-        }
-        return $c;
+	function parseBadWords($c, $s = FALSE) {
+      $q = result_array(db_exec(array(__FILE__, __LINE__), 'query', 'SELECT word, swop, method, type FROM w_badwords '.($s == true ? '' : ' WHERE type = \'0\'')));
+      foreach($q AS $badword) {
+      	$c = str_ireplace((empty($badword['method']) ? $badword['word'] : $badword['word'].' '),($badword['type'] == 1 ? '<img title="'.$badword['word'].'" src="'.$badword['swop'].'" align="absmiddle"/>' : $badword['swop'].' '),$c);
+      }
+      return $c;
 	}        
 	
 	/*
@@ -128,7 +124,7 @@ class tsCore {
 			if($tsUser->is_member == 1) return true;
 			else {
 				if($msg) $mensaje = 'Para poder ver esta pagina debes iniciar sesi&oacute;n.';
-				else $this->redirect('/login/?r='.$this->currentUrl());
+				else $this->redirectTo('/login/?r='.$this->currentUrl());
 			}
 		}
 		// SOLO MODERADORES
@@ -136,7 +132,7 @@ class tsCore {
 			if($tsUser->is_admod || $tsUser->permisos['moacp']) return true;
 			else {
 				if($msg) $mensaje = 'Estas en un area restringida solo para moderadores.';
-				else $this->redirect('/login/?r='.$this->currentUrl());
+				else $this->redirectTo('/login/?r='.$this->currentUrl());
 			}
 		}
 		// SOLO ADMIN
@@ -144,7 +140,7 @@ class tsCore {
 			if($tsUser->is_admod == 1) return true;
 			else {
 				if($msg) $mensaje = 'Estas intentando algo no permitido.';
-				else $this->redirect('/login/?r='.$this->currentUrl());
+				else $this->redirectTo('/login/?r='.$this->currentUrl());
 			}
 		}
 		//
@@ -159,28 +155,33 @@ class tsCore {
 		header("Location: $tsDir");
 		exit();
 	}
-    /*
-        getDomain()
-    */
-    function getDomain(){
-        $domain = explode('/',str_replace('http://','',$this->settings['url']));
-        if(is_array($domain)) {
-        $domain = explode('.',$domain[0]);
-        } else $domain = explode('.',$domain);
-        //
-        $t = count($domain);
-        $domain = $domain[$t - 2].'.'.$domain[$t - 1];
-        //
-        return $domain;
-    }
+   /*
+      getDomain()
+   */
+   function getDomain(){
+      $domain = explode('/',str_replace('http://','',$this->settings['url']));
+      if(is_array($domain)) explode('.',$domain[0]);
+      else $domain = explode('.',$domain);
+       //
+       $t = count($domain);
+       $domain = $domain[$t - 2].'.'.$domain[$t - 1];
+       //
+       return $domain;
+   }
 	/*
 		currentUrl()
 	*/
 	function currentUrl(){
+		if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+      	$isSecure = true;
+    	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' || !empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on') {
+      	$isSecure = true;
+    	}
+    	$protocol = ($isSecure ? 'https' : 'http');
 		$current_url_domain = $_SERVER['HTTP_HOST'];
 		$current_url_path = $_SERVER['REQUEST_URI'];
 		$current_url_querystring = $_SERVER['QUERY_STRING'];
-		$current_url = "http://".$current_url_domain.$current_url_path;
+		$current_url = $protocol . $current_url_domain . $current_url_path;
 		$current_url = urlencode($current_url);
 		return $current_url;
 	}
@@ -329,16 +330,13 @@ class tsCore {
 	/*
 		setSecure()
 	*/
-	public function setSecure($var, $xss = FALSE)
-    {
-        $var = db_exec('real_escape_string', function_exists('magic_quotes_gpc') ? stripslashes($var) : $var);
-        /**
-        if ($xss)
-        {
-        $var = htmlspecialchars($var, ENT_NOQUOTES,'UTF-8');
-        }*/
-     return $var;
-    }
+	public function setSecure($var, $xss = FALSE) {
+      $var = db_exec('real_escape_string', function_exists('magic_quotes_gpc') ? stripslashes($var) : $var);
+      /**
+      if ($xss) $var = htmlspecialchars($var, ENT_NOQUOTES,'UTF-8');
+      */
+    	return $var;
+   }
 	
     /*
         antiFlood()
@@ -458,7 +456,7 @@ class tsCore {
             $uid = $tsUser->getUserID($user);
             if(!empty($uid)) {
                 $find = '@'.$user.' ';
-                $replace = '@<a href="'.$this->settings['url'].'/perfil/'.$user.'" class="hovercard" uid="'.$uid.'">'.$user.'</a> ';
+                $replace = '@<a href="'.$this->settings['url'].'/perfil/'.$user.'" class="" uid="'.$uid.'">'.$user.'</a> ';
                 $html = str_replace($find, $replace, $html);
             }
         }

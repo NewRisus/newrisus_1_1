@@ -1,4 +1,4 @@
-{include file='sections/main_header.tpl'}
+{include file='sections/header.tpl'}
 <div class="container-fluid">
     <div class="row align-items-center">
         <div class="col-sm"></div>
@@ -108,4 +108,4 @@ $('#show_password').click(function(e){
    {/literal}
 </script>
 {/if}
-{include file='sections/main_footer.tpl'}
+{include file='sections/footer.tpl'}

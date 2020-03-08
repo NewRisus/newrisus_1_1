@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>{$tsTitle}</title>
 <!-- Estilos CSS -->
-<link href="{$tsConfig.css}/bootstrap.min.css?{$smarty.now}" rel="stylesheet">
+<link href="{$tsConfig.tema.t_url}/source/bootstrap/bootstrap.min.css?{$smarty.now}" rel="stylesheet">
 <link href="{$tsConfig.url}/auth/css/estilo.css?{$smarty.now}" rel="stylesheet">
 <link rel="shortcut icon" href="{$tsConfig.images}/favicon.ico" type="image/x-icon" />
 <!-- Javascript -->
 <script src="{$tsConfig.js}/jquery.min.js?{$smarty.now}"></script>
 <script src="{$tsConfig.url}/auth/js/plugin.min.js?{$smarty.now}"></script>
 <script src="{$tsConfig.url}/auth/js/acciones.js?{$smarty.now}"></script>
-<script src="{$tsConfig.js}/bootstrap.min.js"></script>
+<script src="{$tsConfig.tema.t_url}/source/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript">
    // {literal}
    var global_data={

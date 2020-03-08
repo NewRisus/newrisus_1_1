@@ -95,7 +95,7 @@ class tsRegistro {
             return 'recaptcha: No hemos podido validar tu humanidad';
         }
 		
-		// COMPROBAR QUE EL NOMBRE DE USUARIO SEA V�LIDO
+		// COMPROBAR QUE EL NOMBRE DE USUARIO SEA VÁLIDO
 		if (!preg_match("/^[a-zA-Z0-9_-]{4,16}$/", $tsData['user_nick'])) {
 			die('nick: Nombre de usuario inv&aacute;lido');
 		}
@@ -157,7 +157,7 @@ class tsRegistro {
 			// ENVIAMOS EL EMAIL
 			if (empty($tsCore->settings['c_reg_activate'])) {
 
-				$key = substr(md5(time()), 0, 32); //La otra opci�n muestra m�s ceros de la cuenta e.e con un substr en el env�o tal vez se solucione.
+				$key = substr(md5(time()), 0, 32); //La otra opción muestra más ceros de la cuenta e.e con un substr en el envío tal vez se solucione.
 
 				if (db_exec(array(__FILE__, __LINE__), 'query', 'INSERT INTO w_contacts (user_id, user_email, time, type, hash) VALUES (\'' . (int) $tsData['user_id'] . '\', \'' . $tsCore->setSecure($tsData['user_email']) . '\', \'' . time() . '\', \'2\', \'' . $key . '\' )')) {
 
@@ -198,7 +198,7 @@ class tsRegistro {
 			} else {
 				$tsUser->userActivate($tsData['user_id'], md5($tsData['user_registro']));
 				$tsUser->loginUser($tsData['user_nick'], $tsData['user_password'], true);
-				return '2: <div class="alert alert-success"><h3>Bienvenido a <b>' . $tsCore->settings['titulo'] . '</b></h3><p class="lead" Ahora estas registrado y tu cuenta ha sido activada, podr&aacute;s disfrutar de esta comunidad inmediatamente.<br><br>&iexcl;Muchas gracias! :)</p></div><div id="listo"></div>';
+				return '2: <div class=""><h1 class="text-center">🎉 Felicidades 🎉</h1><p class="my-4 px-2">Ya eres parte de <b>'.$tsCore->settings['titulo'].'</b>! Ahora puedes disfrutar y compartir todo el contenido que existe en nuestra comunidad sin ninguna restricción, y tu cuenta ha sido activada.<br>¡Muchas gracias!</p><a data-change href="'.$tsCore->settings['url'].'/cuenta/" class="btn btn-outline-success btn-block mt-2">Comenzar Ahora!</a></div>';
 			}
 		} else {
 			return '0: Ocurrio un error, intentalo ma&aacute;s tarde.';

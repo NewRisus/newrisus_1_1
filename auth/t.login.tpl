@@ -1,4 +1,5 @@
-{include file='sections/main_header.tpl'}
+{include file='sections/header.tpl'}
+<div id="load" style="display:none;"></div>
 <div class="container-fluid">
     <div class="row align-items-center">
         <div class="col-sm"></div>
@@ -16,18 +17,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="auth-login-error alert alert-danger" style="display:none;"></div>
-                    <form action="javascript:login_ajax()" method="post" autocomplete="OFF">
+                    <div class="auth-login-error position-fixed alert alert-danger" style="display:none;"></div>
+                    <form action="javascript:login__web()" method="post" autocomplete="OFF">
                     {* TOKEN INVISIBLE *}
                     <input type="hidden" name="csrf" value="{php} echo $_SESSION['token']; {/php}">
                         <h1>Iniciar sesión</h1>
                         <h6>¿Eres un nuevo usuario? <a href="{$tsConfig.url}/registro/">Crea tu cuenta gratis.</a></h6>
                         <br>
                         <div class="form-group">
-                            <input type="nick" class="form-control" placeholder="Nombre de usuario o Email" id="nickname" type="text" for="nickname" name="nick" onblur="AuthLogin('nickname');" onfocus="this.removeAttribute('readonly');" readonly>
+                            <input type="nick" class="form-control" placeholder="Nombre de usuario o Email" id="nickname" type="text" for="nickname" name="nick" onfocus="this.removeAttribute('readonly');" readonly>
                         </div>
                         <div class="form-group">
-                           <input type="password" class="form-control" placeholder="Contraseña" id="password" name="pass" onblur="AuthLogin('password');" onfocus="this.removeAttribute('readonly');" readonly>
+                           <input type="password" class="form-control" placeholder="Contraseña" id="password" name="pass" onfocus="this.removeAttribute('readonly');" readonly>
                         </div>
                         <div class="form-group">
                            <div class="custom-control custom-switch">
@@ -52,4 +53,4 @@
         <div class="col-sm"></div>
     </div>
 </div>
-{include file='sections/main_footer.tpl'}
+{include file='sections/footer.tpl'}
