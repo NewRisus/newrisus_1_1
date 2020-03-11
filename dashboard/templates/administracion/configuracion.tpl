@@ -15,6 +15,10 @@
             <dd><input type="text" class="form-control" id="ai_url" name="url" maxlength="32" value="{$tsConfig.url}" /></dd>
          </dl>
          <dl>
+            <dt><label class="form-label" for="ai_email">Email administrador:</label></dt>
+            <dd><input type="text" class="form-control" id="ai_email" name="email" maxlength="32" value="{$tsConfig.email}" /></dd>
+         </dl>
+         <dl>
             <dt><label class="form-label" for="ai_offline">Modo mantenimiento:</label><span>Esto har&aacute; al Sitio inaccesible a los usuarios. Si quiere, tambi&eacute;n puede introducir un breve mensaje (255 caracteres) para mostrar.</span></dt>
             <dd>
                <div class="custom-control custom-radio custom-control-inline">

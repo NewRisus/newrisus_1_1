@@ -57,12 +57,12 @@
         
 
 		if(empty($action)){
-            $tsMonitor->show_type = 2;
+         $tsMonitor->show_type = 2;
 			$notificaciones = $tsMonitor->getNotificaciones();
 			$smarty->assign("tsData",$notificaciones);
-            // LIVE SOUND
-            $smarty->assign("tsStatus",$_COOKIE);
-            //
+         // LIVE SOUND
+         $smarty->assign("tsStatus",$_COOKIE);
+         //
 		} else {
 			$smarty->assign("tsData",$tsMonitor->getFollows($action));
 		}
