@@ -69,6 +69,8 @@ class tsAdmin {
 
             'url' => $tsCore->setSecure($tsCore->parseBadWords($_POST['url'])),
 
+            'email' => $tsCore->setSecure($tsCore->parseBadWords($_POST['email'])),
+
             'offline' => empty($_POST['offline']) ? 0 : 1,
 
             'offline_message' => $tsCore->setSecure($tsCore->parseBadWords($_POST['offline_message'])),
@@ -132,7 +134,7 @@ class tsAdmin {
 
         if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE `w_configuracion` SET `titulo` = \'' . $c['titulo'] . '\', `slogan` = \'' .
 
-            $c['slogan'] . '\', `url` = \'' . $c['url'] . '\', `chat_id` = \'' . $c['chat'] .
+            $c['slogan'] . '\', `url` = \'' . $c['url'] . '\', `email` = \'' . $c['email'] . '\', `chat_id` = \'' . $c['chat'] .
 
             '\', `xat_id` = \'' . $c['xat'] . '\',`c_last_active` = \'' . $c['active'] . '\', `c_allow_sess_ip` = \'' .
 

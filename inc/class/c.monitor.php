@@ -752,7 +752,6 @@ public function setNotificacion($type = NULL, $user_id = NULL, $obj_user = NULL,
         $query = db_exec(array(__FILE__, __LINE__), 'query', "SELECT c_monitor FROM u_portal WHERE user_id = {$user_id} LIMIT 1");
         $data = db_exec('fetch_assoc', $query);
         $monitor = $data['c_monitor'];
-        var_dump($monitor);
         # NO QUIERO NOTIFICACIONES DE
         if($monitor == 'none') return false;
         # HACK
