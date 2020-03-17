@@ -690,7 +690,7 @@ var notifica = {
       inputs.each(function() {
          if($(this).prop('checked')) fid += $(this).val() + ',';
       });
-      if(PhpJs.empty(fid)) fid = 'none';
+      if(empty(fid)) fid = 'none';
       $('#loading').fadeIn(250);
       $.ajax({
          type: 'POST',
