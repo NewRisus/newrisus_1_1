@@ -685,46 +685,43 @@ var notifica = {
 		}
 	},
 	filter: function() {
-		var inputs = $('#nots_filter :input');
-		var fid = '';        
-		inputs.each(function(){
-		   if($(this).attr('checked')) fid += $(this).val() + ',';
-		});
-		//
-		if(empty(fid)) fid = 'none';
-		   $('#loading').fadeIn(250);
-		   $.ajax({
-		      type: 'POST',
-		      url: global_data.url + '/notificaciones-filtro.php',
-		      data: 'fid=' + fid,
-		      success: function(h){
-		      switch(h.charAt(0)){
-		         case '0': //Error
-		            mydialog.alert('Error', h.substring(3));
-		         break;
-		         case '1': //OK
-		            $('#Msj').slideDown();
-		         break;
-		      }
-		      $('#loading').fadeOut(350);
-		   }
-		});
-	},
-	filter_check: function() {
-		var input = $('#nots_filter :input');
-		if(input.attr('checked') == 'checked') {
-			input.removeAttr('checked'); 
-			$('.change').html('Marcar todos');
-		} else {
-			input.attr({'checked' : 'checked'});
-			$('.change').html('Desmarcar todos');
-		}
-	},
-    close: function(){
+      var inputs = $('#nots_filter :input');
+      var fid = '';
+      inputs.each(function() {
+         if($(this).prop('checked')) fid += $(this).val() + ',';
+      });
+      if(PhpJs.empty(fid)) fid = 'none';
+      $('#loading').fadeIn(250);
+      $.ajax({
+         type: 'POST',
+         url: global_data.url + '/notificaciones-filtro.php',
+         data: 'fid=' + fid
+      }).done(function(rsp){
+         switch(rsp.charAt(0)){
+            case '0':
+               mydialog.alert('Error', rsp.substring(3));
+            break;
+            case '1':
+               $('#Msj').slideDown(200);
+            break;
+         }
+         $('#loading').fadeOut(350);
+      });
+   },
+   filter_check: function() {
+      var input = $('#nots_filter :input');
+      if(input.attr('checked') == 'checked') {
+         input.removeAttr('checked');
+         $('.change').html('Marcar todos');
+      } else {
+         input.attr('checked', 'checked');
+         $('.change').html('Desmarcar todos');
+      }
+   },
+   close: function(){
 		$('#mon_list').hide();
 		$('a[name=Monitor]').parent('li').removeClass('monitor-notificaciones');   
-    }
-	
+   }
 }
 /* Mensajes */
 
