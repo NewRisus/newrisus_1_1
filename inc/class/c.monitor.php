@@ -730,11 +730,15 @@ public function setNotificacion($type = NULL, $user_id = NULL, $obj_user = NULL,
      * @return bool
      * @info GUARDA LOS FILTROS DE LA ACTIVIDAD
     */
-    public function setFiltro() {
+    function setFiltro() {
         global $tsUser, $tsCore;
         //
-        $filtros = $_POST['fid'];
-        if(db_exec(array(__FILE__, __LINE__), 'query', "UPDATE u_portal SET c_monitor = '{$tsCore->setSecure($filtros)}' WHERE user_id = {$tsUser->uid}")) return '1: Configuraciones guardadas.';
+        $filtros = $tsCore->setSecure($_POST['fid']);
+        if(db_exec(array(__FILE__, __LINE__), 'query', "SELECT c_monitor FROM u_portal WHERE user_id = {$tsUser->uid}") == '') {
+            db_exec(array(__FILE__, __LINE__), 'query', "INSERT INTO `u_portal` (`user_id`, `last_posts_visited`, `last_posts_shared`, `last_posts_cats`, `c_monitor`) VALUES ({$tsUser->uid}, '', '', '', '{$filtros}')");
+             return '1: Configuraciones guardadas.';
+        }
+        elseif(db_exec(array(__FILE__, __LINE__), 'query', "UPDATE u_portal SET c_monitor = '{$filtros}' WHERE user_id = {$tsUser->uid}")) return '1: Configuraciones guardadas.';
         else return '0: Ocurri&oacute; un error, intentalo m&aacute;s tarde!';
     }
     /**

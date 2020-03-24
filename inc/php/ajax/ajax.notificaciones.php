@@ -14,7 +14,7 @@
 	// NIVELES DE ACCESO Y PLANTILLAS DE CADA ACCIÓN
 	$files = array(
 		'notificaciones-ajax' => array('n' => 2, 'p' => 'ajax'),
-        'notificaciones-filtro' => array('n' => 2, 'p' => ''),
+      'notificaciones-filtro' => array('n' => 2, 'p' => ''),
 	);
 
 /**********************************\

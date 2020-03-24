@@ -68,7 +68,6 @@ class tsAdmin {
             'slogan' => $tsCore->setSecure($tsCore->parseBadWords($_POST['slogan'])),
 
             'url' => $tsCore->setSecure($tsCore->parseBadWords($_POST['url'])),
-
             'email' => $tsCore->setSecure($tsCore->parseBadWords($_POST['email'])),
 
             'offline' => empty($_POST['offline']) ? 0 : 1,
@@ -307,31 +306,13 @@ class tsAdmin {
     {
 
         global $tsCore, $tsUser;
-
         //
-
         $not_id = intval($_GET['nid']);
-
-        $not_body = $tsCore->setSecure($tsCore->parseBadWords(substr($_POST['not_body'],
-
-            0, 190)));
-
+        $not_body = $tsCore->setSecure($tsCore->parseBadWords(substr($_POST['not_body'], 0, 190)));
         $not_active = empty($_POST['not_active']) ? 0 : 1;
-
         //
-
-        if (!empty($not_body))
-
-        {
-
-            if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE `w_noticias` SET `not_autor` = \'' . $tsUser->uid . '\', `not_body` = \'' .
-
-                $not_body . '\', not_active = \'' . $not_active . '\' WHERE not_id = \'' . (int)
-
-                $not_id . '\''))
-
-                return true;
-
+        if (!empty($not_body)) {
+            if (db_exec(array(__FILE__, __LINE__), 'query', 'UPDATE `w_noticias` SET `not_autor` = \'' . $tsUser->uid . '\', `not_body` = \'' . $not_body . '\', not_active = \'' . $not_active . '\' WHERE not_id = \'' . (int)$not_id . '\'')) return true;
         }
 
     }

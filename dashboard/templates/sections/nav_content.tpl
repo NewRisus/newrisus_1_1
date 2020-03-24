@@ -70,12 +70,7 @@
 			</ul>
 		</li>
 		{else}
-		<li>
-			<a href="inbox.html">
-			<i class="fas fa-chart-bar"></i>Inbox</a>
-			<span class="inbox-num">3</span>
-		</li>
-		<li class="nav-item">
+			<li class="nav-item">
                 <a href="{$tsConfig.url}/moderacion/" class="nav-link">Centro de Moderaci&oacute;n</a>
             </li>
             <li class="nav-item dropdown">

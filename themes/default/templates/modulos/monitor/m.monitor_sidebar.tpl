@@ -8,28 +8,28 @@
          <li class="divider"></li>
          <div class="emptyData" id="Msj" style="display:none;">Configuraciones guardadas</div>
          <li><strong>Mis Posts</strong></li>
-         <li><label><span class="monac_icons ma_star"></span><input type="checkbox" value="1" {if $tsData.filtro.1 == false}checked="true"{/if} /> Favoritos</label></li>
-         <li><label><span class="monac_icons ma_comment_post"></span><input type="checkbox" value="2" {if $tsData.filtro.2 == false}checked="true"{/if} /> Comentarios</label></li>
-         <li><label><span class="monac_icons ma_points"></span><input type="checkbox" value="3" {if $tsData.filtro.3 == false}checked="true"{/if} /> Puntos Recibidos</label></li>
-         <li><label><span class="monac_icons ma_medal"></span><input type="checkbox" value="16" {if $tsData.filtro.16 == false}checked="true"{/if} /> Medallas recibidas</label></li>
+         <li><label><span class="monac_icons ma_star"></span><input type="checkbox" value="1" {if $tsData.filtro.1}checked="true"{/if} /> Favoritos</label></li>
+         <li><label><span class="monac_icons ma_comment_post"></span><input type="checkbox" value="2" {if $tsData.filtro.2}checked="true"{/if} /> Comentarios</label></li>
+         <li><label><span class="monac_icons ma_points"></span><input type="checkbox" value="3" {if $tsData.filtro.3}checked="true"{/if} /> Puntos Recibidos</label></li>
+         <li><label><span class="monac_icons ma_medal"></span><input type="checkbox" value="16" {if $tsData.filtro.16}checked="true"{/if} /> Medallas recibidas</label></li>
          <li><strong>Mis Comentarios</strong></li>
-         <li><label><span class="monac_icons ma_voto"></span><input type="checkbox" value="8" {if $tsData.filtro.8 == false}checked="true"{/if} /> Votos</label></li>
-         <li><label><span class="monac_icons ma_comment_resp"></span><input type="checkbox" value="9" {if $tsData.filtro.9 == false}checked="true"{/if} /> Respuestas</label></li>
+         <li><label><span class="monac_icons ma_voto"></span><input type="checkbox" value="8" {if $tsData.filtro.8}checked="true"{/if} /> Votos</label></li>
+         <li><label><span class="monac_icons ma_comment_resp"></span><input type="checkbox" value="9" {if $tsData.filtro.9}checked="true"{/if} /> Respuestas</label></li>
          <li><strong>Usuarios que sigo</strong></li>
-         <li><label><span class="monac_icons ma_follow"></span><input type="checkbox" value="4" {if $tsData.filtro.4 == false}checked="true"{/if} /> Nuevos</label></li>
-         <li><label><span class="monac_icons ma_post"></span><input type="checkbox" value="5" {if $tsData.filtro.5 == false}checked="true"{/if} /> Posts</label></li>
-         <li><label><span class="monac_icons ma_photo"></span><input type="checkbox" value="10" {if $tsData.filtro.10 == false}checked="true"{/if} /> Fotos</label></li>
-         <li><label><span class="monac_icons ma_share"></span><input type="checkbox" value="6" {if $tsData.filtro.6 == false}checked="true"{/if} /> Recomendaciones</label></li>
+         <li><label><span class="monac_icons ma_follow"></span><input type="checkbox" value="4" {if $tsData.filtro.4}checked="true"{/if} /> Nuevos</label></li>
+         <li><label><span class="monac_icons ma_post"></span><input type="checkbox" value="5" {if $tsData.filtro.5}checked="true"{/if} /> Posts</label></li>
+         <li><label><span class="monac_icons ma_photo"></span><input type="checkbox" value="10" {if $tsData.filtro.10}checked="true"{/if} /> Fotos</label></li>
+         <li><label><span class="monac_icons ma_share"></span><input type="checkbox" value="6" {if $tsData.filtro.6}checked="true"{/if} /> Recomendaciones</label></li>
          <li><strong>Posts que sigo</strong></li>
-         <li><label><span class="monac_icons ma_blue_ball"></span><input type="checkbox" value="7" {if $tsData.filtro.7 == false}checked="true"{/if} /> Comentarios</label></li>
+         <li><label><span class="monac_icons ma_blue_ball"></span><input type="checkbox" value="7" {if $tsData.filtro.7}checked="true"{/if} /> Comentarios</label></li>
          <li><strong>Mis Fotos</strong></li>
-         <li><label><span class="monac_icons ma_comment_post"></span><input type="checkbox" value="11" {if $tsData.filtro.11 == false}checked="true"{/if} /> Comentarios</label></li>
-         <li><label><span class="monac_icons ma_medal"></span><input type="checkbox" value="17" {if $tsData.filtro.17 == false}checked="true"{/if} /> Medallas recibidas</label></li>
+         <li><label><span class="monac_icons ma_comment_post"></span><input type="checkbox" value="11" {if $tsData.filtro.11}checked="true"{/if} /> Comentarios</label></li>
+         <li><label><span class="monac_icons ma_medal"></span><input type="checkbox" value="17" {if $tsData.filtro.17}checked="true"{/if} /> Medallas recibidas</label></li>
          <li><strong>Perfil</strong></li>
-         <li><label><span class="monac_icons ma_status"></span><input type="checkbox" value="12" {if $tsData.filtro.12 == false}checked="true"{/if} /> Publicaciones</label></li>
-         <li><label><span class="monac_icons ma_w_comment"></span><input type="checkbox" value="13" {if $tsData.filtro.13 == false}checked="true"{/if} /> Comentarios</label></li>
-         <li><label><span class="monac_icons ma_w_like"></span><input type="checkbox" value="14" {if $tsData.filtro.14 == false}checked="true"{/if} /> Likes</label></li>
-         <li><label><span class="monac_icons ma_medal"></span><input type="checkbox" value="15" {if $tsData.filtro.15 == false}checked="true"{/if} /> Medallas recibidas</label></li>
+         <li><label><span class="monac_icons ma_status"></span><input type="checkbox" value="12" {if $tsData.filtro.12}checked="true"{/if} /> Publicaciones</label></li>
+         <li><label><span class="monac_icons ma_w_comment"></span><input type="checkbox" value="13" {if $tsData.filtro.13}checked="true"{/if} /> Comentarios</label></li>
+         <li><label><span class="monac_icons ma_w_like"></span><input type="checkbox" value="14" {if $tsData.filtro.14}checked="true"{/if} /> Likes</label></li>
+         <li><label><span class="monac_icons ma_medal"></span><input type="checkbox" value="15" {if $tsData.filtro.15}checked="true"{/if} /> Medallas recibidas</label></li>
          <li class="divider"></li>
          <center><a href="#" onclick="notifica.filter(); return false;" class="mBtn btnOk" style="margin:auto;display:inline-block;">Guardar cambios</a></center>
       </ul>
