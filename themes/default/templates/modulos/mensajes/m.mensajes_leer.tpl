@@ -1,55 +1,47 @@
-<div class="mpRContent">
-   <div class="mpHeader">
-      <h2><span class="acciones dno" onclick="$('.mpOptions').toggle();$(this).toggleClass('open','dno');"></span> {$tsMensajes.msg.mp_subject}</h2>
-      <div class="mpOptions" style="display:none;">
-         <ul class="actions-list">
-            <li><a href="#" onclick="mensaje.marcar('{$tsMensajes.msg.mp_id}:{$tsMensajes.msg.mp_type}', 1, 2, this); return false;">Marcar como no le&iacute;do</a></li>
-            <li><a href="#" onclick="mensaje.eliminar('{$tsMensajes.msg.mp_id}:{$tsMensajes.msg.mp_type}',2); return false;">Eliminar</a></li>
-            <li><a href="#" onclick="denuncia.nueva('mensaje',{$tsMensajes.msg.mp_id}, '', ''); return false;">Marcar como correo no deseado...</a></li>
-            <li><a href="#" onclick="denuncia.nueva('usuario',{if $tsMensajes.msg.mp_from != $tsUser->uid}{$tsMensajes.msg.mp_from}{else}{$tsMensajes.msg.mp_to}{/if}, '', '{if $tsMensajes.msg.mp_from != $tsUser->uid}{$tsMensajes.msg.user_name}{else}{$tsUser->getUsername($tsMensajes.msg.mp_to)}{/if}'); return false">Denunciar a este usuario...</a></li>
-             <li><a href="javascript:bloquear({$tsMensajes.ext.uid}, {if $tsMensajes.ext.block}false{else}true{/if}, 'mensajes')" id="bloquear_cambiar">{if $tsMensajes.ext.block}Desbloquear{else}Bloquear{/if} a <u>{$tsMensajes.ext.user}</u>...</a></li>
-            <li><a href="{$tsConfig.url}/mensajes/">&laquo; Volver a mensajes</a></li>
-         </ul>
-      </div>
-   </div>
-   <div class="mpHistory" id="historial">
-      {if $tsMensajes.res}{foreach from=$tsMensajes.res item=mp}
-         <div class="main{if $mp.user_name != $tsUser->nick}1{else}2{/if} both">
+<div class="mpHeader">
+   <span class="h3 d-block" style="margin-bottom: -7px">{$tsMensajes.msg.mp_subject}</span>
+   <span class="small font-italic">Entre <a href="{$tsConfig.url}/perfil/{$tsUser->nick}">T&uacute;</a> y <a href="{$tsConfig.url}/perfil/{$tsMensajes.ext.user}">{$tsMensajes.ext.user}</a> </span>
+</div>
+<div class="px-2 py-5 chat-box bg-white">
+   <div id="historial">
+   {if $tsMensajes.res}
+      {foreach from=$tsMensajes.res item=mp}
+         <!-- Sender Message-->
+         <div class="media w-50 mb-3{if $mp.user_name == $tsUser->nick} ml-auto{/if}">
             {if $mp.user_name != $tsUser->nick}
-            <div class="autor-image">
-               <a href="{$tsConfig.url}/perfil/{$mp.user_name}">
-                  <img src="{$tsConfig.url}/files/avatar/{$mp.mr_from}_120.jpg" />
-               </a>
-            </div>
+            <img onclick="location.href='{$tsConfig.url}/perfil/{$mp.user_name}'" src="{$tsConfig.url}/files/avatar/{$mp.mr_from}_50.jpg" alt="user" width="50" class="rounded-circle" style="cursor:pointer;">
             {/if}
-            <div class="messages">
-               <div>
-                  <a href="{$tsConfig.url}/perfil/{$mp.user_name}" class="autor-name">{$mp.user_name}</a>
-                  <time class="mp-date">{$mp.mr_date|hace} {if $tsUser->is_admod}(<a href="{$tsConfig.url}/moderacion/buscador/1/1/{$mp.mr_ip}">{$mp.mr_ip}</a>){/if}</time>
-                  <div class="body">{$mp.mr_body|nl2br}</div>
+            <div class="media-body ml-3">
+               <div class="bg-{if $mp.user_name == $tsUser->nick}primary{else}light{/if} rounded py-2 px-3 mb-2">
+                  <p class="text-small mb-0 text-{if $mp.user_name == $tsUser->nick}white{else}muted{/if}">{$mp.mr_body|nl2br}</p>
                </div>
+               <p class="small text-muted">{$mp.mr_date|date_format:"🕒 %H:%M %p | 📅 %b %e"} | <a href="{$tsConfig.url}/perfil/{$mp.user_name}">👤 {$mp.user_name}</a>{if $tsUser->is_admod} |<a href="{$tsConfig.url}/moderacion/buscador/1/1/{$mp.mr_ip}">{$mp.mr_ip}</a>{/if}</p>
             </div>
-            {if $mp.user_name == $tsUser->nick}
-            <div class="autor-image">
-               <a href="{$tsConfig.url}/perfil/{$mp.user_name}">
-                  <img src="{$tsConfig.url}/files/avatar/{$mp.mr_from}_120.jpg" />
-               </a>
-            </div>
-            {/if}
          </div>
-      {/foreach}{else}
+      {/foreach}
+   {else}
       <li class="emptyData">No se pudieron cargar los mensajes.</li>
-      {/if}
+   {/if}
    </div>
-   {if $tsUser->is_admod || ($tsMensajes.msg.mp_del_to == 0 && $tsMensajes.msg.mp_del_from == 0 && $tsMensajes.ext.can_read == 1)}
-   <div class="mpForm">
-      <div class="form">
-         <textarea id="respuesta" onfocus="onfocus_input(this)" onblur="onblur_input(this)" title="Escribe una respuesta..." class="autogrow onblur_effect">Escribe una respuesta...</textarea>
+</div>
+{if $tsUser->is_admod || ($tsMensajes.msg.mp_del_to == 0 && $tsMensajes.msg.mp_del_from == 0 && $tsMensajes.ext.can_read == 1)}
+   <!-- Typing area -->
+   <div class="bg-light">
+      <div class="input-group">
+         <input type="text" id="respuesta" placeholder="Escribe una respuesta..." class="form-control rounded-0 border-0 py-4 bg-light">
          <input type="hidden" id="mp_id" value="{$tsMensajes.msg.mp_id}" />
-         <a class="btn btn-info text-white resp" onclick="mensaje.responder(); return false;">Responder</a>
+         <div class="input-group-append">
+            <button onclick="mensaje.responder(); return false;" class="btn btn-link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 12l11 3.1 7-8.1-8.156 5.672-4.312-1.202 15.362-7.68-3.974 14.57-3.75-3.339-2.17 2.925v-.769l-2-.56v7.383l4.473-6.031 4.527 4.031 6-22z"/></svg></button>
+         </div>
       </div>
    </div>
    {else}
    <li class="emptyData">Un participante abandon&oacute; la conversaci&oacute;n o no tienes permiso para responder</li>
-   {/if}
-</div>
+{/if}
+<style>
+.messages-box,
+.chat-box {
+  height: 610px;
+  overflow-y: auto;
+}
+</style>

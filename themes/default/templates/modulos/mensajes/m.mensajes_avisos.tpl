@@ -1,52 +1,38 @@
 {if $tsMensajes}
-<div id="mpList">
+<ul class="list-unstyled p-0" id="mpList">
    {foreach from=$tsMensajes item=av}
-   <div id="av_{$av.av_id}" class="mp-group{if $av.av_read == 0} unread{/if}">
-      <div class="mp-item">
-         <a class="mensaje" href="{$tsConfig.url}/mensajes/avisos/?aid={$av.av_id}">
-            <img src="{$tsConfig.images}/icons/avtype_{$av.av_type}.png" />
-            <div class="mp_desc">
-               <div class="mp_time">{$av.av_date|fecha}</div>
-               <div class="autor">{$tsConfig.titulo}</div>
-               <div class="subject">{$av.av_subject}</div>
-               <div class="preview">{$av.av_body|escape|truncate:120}</div>
-            </div>
-         </a>
+   <li id="av_{$av.av_id}" {if $av.av_read == 0} class="bg-warning"{/if}>
+      <div class="uiGrid media border-bottom border-dark position-relative pb-2">
+         <img src="{$tsConfig.images}/icons/avtype_{$av.av_type}.svg" width="60" height="60" class="align-self-start m-1 fill-aviso" alt="{$mp.user_name}">
+         <div class="media-body pr-2">
+            <small onclick="location.href='{$tsConfig.url}/mensajes/avisos/?did={$av.av_id}'" class="font-weight-bolder text-danger float-right mt-1">Borrar</small>
+            <h5 class="m-0">{$tsConfig.titulo}</h5>
+            <p class="font-weight-bold m-0 p-0"><a href="{$tsConfig.url}/mensajes/avisos/?aid={$av.av_id}">{$av.av_subject}</a> <time class="small float-right">{$av.av_date|date_format:"%d/%m/%Y"}</time></p>
+            <p class="small m-0 p-0"><a href="{$tsConfig.url}/mensajes/avisos/?aid={$av.av_id}">{$av.av_body|truncate:70}</a></p>
+         </div>
       </div>
-      <div class="mp-item">
-         <a href="{$tsConfig.url}/mensajes/avisos/?did={$av.av_id}" title="Eliminar"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 21h-17l-7-7.972 7-8.028h17v16zm-16.09-14l-5.252 6.023 5.247 5.977h14.095v-12h-14.09zm6.09 4.586l2.586-2.586 1.414 1.414-2.586 2.586 2.586 2.586-1.414 1.414-2.586-2.586-2.586 2.586-1.414-1.414 2.586-2.586-2.586-2.586 1.414-1.414 2.586 2.586z"/></svg></a>
-      </div>
-   </div>
+   </li>
    {/foreach}
-</div>
+</ul>
 {elseif $tsMensaje.av_id > 0}
 <div class="mpRContent">
-   <div class="mpHeader mpAviso" style="background-image: url('{$tsConfig.images}/icons/avtype_{$tsMensaje.av_type}.png');">
-      <h2>{$tsMensaje.av_subject}</h2>
-      <span class="info">
-         <a href="{$tsConfig.url}">{$tsConfig.titulo}</a> - {$tsMensaje.av_date|hace}
-      </span>
+   <div class="mpHeader">
+      <a class="float-right mr-2 mt-2" href="{$tsConfig.url}/mensajes/avisos/?did={$tsMensaje.av_id}">Eliminar</a>
+      <h2 class="m-0 p-0">{$tsMensaje.av_subject}</h2>
+      <span class="small font-weight-bolder"><a href="{$tsConfig.url}/">{$tsConfig.titulo}</a> - {$tsMensaje.av_date|date_format:"%e %b, %Y"}</span>
    </div>
-   <ul class="mpHistory row" id="historial">
-      <li class="col-sm-9">
-         <div class="main clearBoth">
-            <div class="mensaje">
-               <div><a href="{$tsConfig.url}/perfil/{$mp.user_name}" class="autor-name">{$mp.user_name}</a> </div>
-               <div>{$tsMensaje.av_body|nl2br}</div>
+   <div class="px-2 py-5 chat-box bg-white">
+      <div id="historial">
+         <!-- Sender Message-->
+         <div class="media w-100 mb-3">
+            <img src="{$tsConfig.images}/icons/avtype_{$tsMensaje.av_type}.svg" alt="user" width="50" class="rounded-circle fill-aviso">
+            <div class="media-body ml-3">
+                  <p class="text-small mb-0 text-muted">{$tsMensaje.av_body|nl2br}</p>
             </div>
          </div>
-      </li>
-      <div class="col-sm-3 mpOptions">
-         <div class="info"><h2>Acciones</h2></div>
-         <ul class="actions-list">
-            <li><a href="{$tsConfig.url}/mensajes/avisos/?did={$tsMensaje.av_id}">Eliminar</a></li>
-            <li class="div"></li>
-            <li><a href="{$tsConfig.url}/mensajes/avisos/">&laquo; Volver a avisos</a></li>
-         </ul>
       </div>
-   </ul>
+   </div>
 </div>
-<div class="clearBoth"></div>
 {else}
 <div class="emptyMensajes">{if $tsMensaje}{$tsMensaje}{else}No hay avisos o alertas{/if}</div>
 {/if}

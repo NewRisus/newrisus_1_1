@@ -516,6 +516,117 @@ span.ma_medal{ background: url(images/icons/med/blue_bronze_16.png);}
     text-align:center;
     }
     
-.has-notmp {
-    color: #2d3436;
+/* MONITOR */
+.listado,
+.listado li .listado-content,
+.monitor-item  {
+    display: grid;
+}
+.listado {
+    margin-top: 10px;
+    grid-template-columns: repeat(2, 1fr);
+}
+.listado li .listado-content {
+    grid-template-columns: 60px 1fr 200px;
+    grid-gap: 10px;
+    height: 60px;
+}
+.monitor-item {
+    grid-template-columns: 55px 1fr;
+    margin-bottom: 6px;
+}
+.checkbox li {
+}
+.checkbox li strong {
+    display: block;
+    font-size: 17px;
+    padding: 5px;
+    background-color: #DDD;
+}
+.checkbox li input[type=checkbox] {
+    width: 0;
+    height: 0;
+}
+.checkbox li input[type=checkbox] ~ label {
+    color: #888;
+    position: relative;
+    height: 18px;
+    line-height: 20px;
+    padding: 2px 2px 2px 20px;
+    font-size: 14px;
+}
+.checkbox li input[type=checkbox] ~ label::before {
+    content: '';
+    background-color: #CCC;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+}
+.checkbox li input[type=checkbox]:checked ~ label::before {
+    background-color: #41ad0c;
+}
+.alertas {
+    position: absolute;
+    top: -6px;
+    right: 0px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    background-color: #ff0000f5;
+    padding: 0px 4px;
+    text-align: center;
+    height: 13px;
+    width: 20px;
+    line-height: 13px;
+}
+.alertas {
+    position: absolute;
+    top: -6px;
+    right: 0px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    background-color: #ff0000f5;
+    padding: 0px 4px;
+    text-align: center;
+    height: 13px;
+    width: 20px;
+    line-height: 13px;
+}
+.alertas a {
+    padding: 0;
+    color: #FFF;
+    margin: 0;
+}
+.notificaciones-list {
+    display: none;
+    width: 300px;
+    text-align: left;
+    font-weight: normal!important;
+    right: 0;
+    color: #444;
+    font-size: 12px!important;
+}
+.notificaciones-list strong {
+    display: block;
+    padding: 5px;
+}
+.notificaciones-list ul li {
+    padding: 4px 2px;
+}
+.notificaciones-list ul#boxMail a {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-gap: 5px;
+}
+.notificaciones-list ul#boxMail a > img {
+    width: 45px;
+    height: 45px;
+    margin: 2px auto;
+}
+.notificaciones-list ul#boxMail a > .content .subject {
+    display: block;
+    padding: 4px 0;
 }

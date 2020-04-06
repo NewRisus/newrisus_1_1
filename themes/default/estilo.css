@@ -2337,7 +2337,7 @@ li.group strong {
     margin: 5px;
     font-weight: normal;
 }
-.action span.icon-noti, .notificaciones-list .icon-noti, .categoriaList span.icon-noti, div.group-4, div.group-6, div.group-3 {
+.action span.icon-noti, .categoriaList span.icon-noti, div.group-4, div.group-6, div.group-3 {
     background-image: url('images/sprite-notification.png');
     background-repeat: no-repeat;
     display: block;
@@ -2346,9 +2346,6 @@ li.group strong {
     width: 16px;
     float: left;
     margin-right: 5px;
-}
-.notificaciones-list .icon-noti {
-    font-size: 11px!important;
 }
 .categoriaList li.icon-noti {
     margin-left: 8px;
@@ -3960,9 +3957,6 @@ ul.points_user li span.mBtn {
     width: auto;
     height: auto;
     padding-left: 12px;
-}
-.notificaciones-list .tipsy-inner {
-    background-color: #FFFFCC;
 }
 /*! Tipsy minificado */
 
@@ -7217,154 +7211,6 @@ ul#resultados-borradores li span.causa {
     display: block;
     margin: 0;
 }
-/* FIN - Borradores */
-
-
-
-/* vincular facebook - im a social bitch *
-
-
-
-#modalBody input.selected {
-    -moz-box-shadow: 0 0 5px #0066FF!important;
-    border: 1px solid #0066FF!important;
-}
-.facebook-vinc {
-    display: block;
-    width: 161px;
-    height: 22px;
-    background: url('images/vincular-face.png') no-repeat transparent;
-    text-indent: -99999px;
-}
-.facebook-login, social-connect a.facebook-login {
-    display: block!important;
-    width: 215px!important;
-    height: 22px!important;
-    background: url('images/indentificarme-face.png') no-repeat transparent!important;
-    text-indent: -99999px;
-}
-*/
-
-.post-deleted .registro .social-connect {
-    width: 265px!important;
-}
-/*
-
-.facebook-vinc:hover {
-    background-position: 0 -24px;
-}
-.facebook-vinc:active , .facebook-vinc:focus {
-    background-position: 0 -48px;
-}
-.tabbed-d div.facebook-box-out {
-    background: url("images/facebook-box.gif") no-repeat scroll 60px 3px #005AA2;
-    padding: 8px;
-    border: 1px solid #284470;
-    position: relative;
-}
-.tabbed-d div.facebook-box-out img {
-    padding: 2px;
-    background: #fff;
-    height: 48px;
-    width: 48px;
-    display: block;
-}
-.face-out {
-    width: 16px;
-    display: block;
-    height: 16px;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: url('images/cerrar.png') no-repeat top left;
-    text-indent: -9999px;
-}
-.social-connect {
-    background: #FFFFCC;
-    padding: 8px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #d5d55c;
-}
-.social-connect a {
-    display: block;
-    width: 205px;
-    height: 22px;
-    background: url('images/registrar-face.png') no-repeat transparent;
-    text-indent: -9999px;
-    margin: 0 auto;
-}
-*/
-
-.notificaciones-list {
-    display: none;
-    background: #FFF;
-    position: absolute;
-    z-index: 300;
-    width: 300px;
-    text-align: left;
-    font-weight: normal;
-    color: #444;
-    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-    border-left: 0px solid #CCC;
-    border-bototm: 1px solid #CCC;
-    border-right: 1px solid #CCC;
-}
-.notificaciones-list ul {
-    max-height: 250px;
-    overflow-y: auto;
-    padding: 0 10px;
-    margin: 5px 0;
-}
-.notificaciones-list ul li:hover {
-    background-color: #F7F7F7;
-}
-.userInfoLogin ul li div.notificaciones-list ul li {
-    display: block;
-    border-top: 1px solid #EEE!important;
-    float: none;
-    padding: 5px 3px;
-    border: none;
-    line-height: 18px;
-    margin: 0;
-}
-.userInfoLogin li div.notificaciones-list ul li.unread {
-    background-color: #FFFFCC!important;
-}
-li.monitor-notificaciones {
-    background: #FFF!important;
-}
-.userInfoLogin ul li div.notificaciones-list ul li a {
-    display: inline;
-    width: auto;
-    height: auto;
-    margin: 0;
-    color: #007394;
-    padding: 0;
-    border-right: none;
-    font-weight: bold;
-    text-shadow: none;
-}
-.userInfoLogin ul li div.notificaciones-list ul li a:hover {
-    text-decoration: underline;
-}
-.ver-mas {
-    display: block;
-    padding: 6px;
-    text-align: center;
-    background: #EEE;
-    font-weight: bold;
-    text-shadow: none;
-    color: #0f385b;
-    border-top: 1px solid #CCC;
-    border-bottom: 1px solid #CCC;
-}
-.ver-mas:hover {
-    background: #a7d1f5;
-    color: #010b13;
-    text-shadow: none;
-    border-top: #000;
-    border-top: 1px solid #5a93c3;
-}
 /* VOTOS */
 
 span.cvoto {
@@ -7463,10 +7309,6 @@ div.buttons ul .hover:hover {
     background: none;
 }
 
-
-
-
-
 /* NEWRISUS */
 .nr-divider {
     height: 0px;
@@ -7553,15 +7395,17 @@ div.buttons ul .hover:hover {
 }
 .nr-home-categoria-icono {
     width: 33px;
+    height: 33px;
     display: block;
     float: left;
-    height: 33px;
-    border-radius: 50px;
+    border-radius: 5px;
     text-align: center;
-    line-height: 34px;
-    font-size: 1.4em;
-    color: white;
     margin-right: 1%;
+}
+.nr-home-categoria-icono i {
+    color: white;
+    font-size: 1.6em;
+    line-height: 34px;
 }
 .nr-home-categoria-titulo {
     display: block;

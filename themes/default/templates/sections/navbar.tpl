@@ -13,7 +13,7 @@
                 <a class="nav-link nr-menu-ico nr-menu-item" href="{$tsConfig.url}/equipo/" title="Ir a conocer el staff"><i class="fa fa-shield-alt"></i> Equipo</a>
             </li>
         </ul>
-        <ul class="navbar-nav mr-auto links-barra" style="font-size: 0.75em; margin-left: auto!important; margin-right:0px !important;">
+        <ul class="navbar-nav mr-auto links-barra notmp" style="font-size: 0.75em; margin-left: auto!important; margin-right:0px !important;">
             {if $tsUser->is_member}
             {if $tsAvisos}
             <li class="nav-item navbar-text iconos-navbar nr-noti-msg">
@@ -23,11 +23,22 @@
             <li class="nav-item navbar-text iconos-navbar nr-noti-msg">
                 <a class="nav-link nr-menu-ico" href="{$tsConfig.url}/agregar/" title="Publicar nuevo tema"><i class="fas fa-plus-circle"></i></a>
             </li>
-            <li class="nav-item navbar-text iconos-navbar nr-noti-msg notificaciones">
-                <a class="nav-link nr-menu-ico{if $tsNots > 0} has-notmp{/if}" href="{$tsConfig.url}/monitor/" title="Revisar mis notificaciones"><i class="fas fa-bell"></i></a>
+            <li class="nav-item navbar-text iconos-navbar nr-noti-msg position-relative monitor">
+                <a class="nav-link nr-menu-ico" href="{$tsConfig.url}/monitor/" onclick="notifica.last(); return false" alt="Monitor de usuario" name="Monitor"><span class="fas fa-bell"></span></a>
+                <div class="notificaciones-list bg-white shadow position-absolute" id="mon_list" style="display:none;">
+                   <strong onclick="location.href='{$tsConfig.url}/monitor/'">Notificaciones</strong>
+                   <ul class="list-unstyled m-0 p-0">
+                   </ul>
+                   <a href="{$tsConfig.url}/monitor/" class="d-block text-center small text-info">Ver m&aacute;s notificaciones</a>
+                </div>
             </li>
-            <li class="nav-item navbar-text iconos-navbar nr-noti-msg messages">
-                <a class="nav-link nr-menu-ico{if $tsMPs > 0} has-notmp{/if}" href="{$tsConfig.url}/mensajes/" title="Revisar mis mensajes"><i class="fas fa-envelope"></i></a>
+            <li class="nav-item navbar-text iconos-navbar nr-noti-msg position-relative mensajes">
+                <a class="nav-link nr-menu-ico" href="{$tsConfig.url}/mensajes/" onclick="mensaje.last(); return false" alt="Mensajes Personales" name="Mensajes"><span class="fas fa-envelope"></span></a>
+                <div class="notificaciones-list bg-white shadow position-absolute" id="mp_list" style="display:none;">
+                   <strong onclick="location.href='{$tsConfig.url}/mensajes/'">Mensajes</strong>
+                   <ul id="boxMail" class="list-unstyled m-0 p-0"></ul>
+                   <a href="{$tsConfig.url}/mensajes/" class="d-block text-center small text-info">Ver todos los mensajes</a>
+                </div>
             </li>
             <li class="nav-item navbar-text dropdown iconos-navbar">
                 <a class="nav-link nr-menu-ico" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{$tsUser->nick} <img src="{$tsConfig.url}/files/avatar/{$tsUser->uid}_120.jpg" class="avatar-menu"></a>

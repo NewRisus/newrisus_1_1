@@ -1,27 +1,17 @@
 {include file='sections/main_header.tpl'}
-<link rel="stylesheet" href="{$tsConfig.css}/mensajes.css">
-                {include file='modulos/mensajes/m.mensajes_menu.tpl'}
-                <div style="float:right;width:730px">
-                	<div style="display: none;" id="m-mensaje"></div>
-                    <div class="boxy">
-                        <div class="boxy-title">
-                            <h3>Mensajes</h3>
-                            <form method="get" action="{$tsConfig.url}/mensajes/search/">
-                                <input type="text" name="qm" placeholder="Buscar en Mensajes" title="Buscar en Mensajes" value="{$tsMensajes.texto}" class="search_mp onblur_effect"/>
-                            </form>
-                        </div>
-                        <div class="boxy-content" style="padding:0" id="mensajes">
-                            {if $tsAction == '' || $tsAction == 'enviados' || $tsAction == 'respondidos' || $tsAction == 'search'}
-                            {include file='modulos/mensajes/m.mensajes_list.tpl'}
-                            {elseif $tsAction == 'leer'}
-                            {include file='modulos/mensajes/m.mensajes_leer.tpl'}
-                            {elseif $tsAction == 'avisos'}
-                            {include file='modulos/mensajes/m.mensajes_avisos.tpl'}
-                            
-                            {/if}
-						</div>
-                    </div>
-                </div>
-                <div style="clear: both;"></div>
-                
+<div class="row">
+   <div style="display: none;" class="col-12" id="m-mensaje"></div>
+   {include "modulos/mensajes/m.mensajes_menu.tpl"}
+   <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12">
+      <div class="bg-white p-2 shadow rounded mb-3" id="mensajes">
+         {if $tsAction == '' || $tsAction == 'enviados' || $tsAction == 'respondidos' || $tsAction == 'search'}
+            {include "modulos/mensajes/m.mensajes_list.tpl"}
+         {elseif $tsAction == 'leer'}
+            {include "modulos/mensajes/m.mensajes_leer.tpl"}
+         {elseif $tsAction == 'avisos'}
+            {include "modulos/mensajes/m.mensajes_avisos.tpl"}         
+         {/if}
+      </div>
+   </div>
+</div>
 {include file='sections/main_footer.tpl'}

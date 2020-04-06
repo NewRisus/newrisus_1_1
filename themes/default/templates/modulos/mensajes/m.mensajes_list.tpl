@@ -1,31 +1,31 @@
 {if $tsMensajes.data}
-<div id="mpList">
+<ul class="list-unstyled p-0" id="mpList">
    {foreach from=$tsMensajes.data item=mp}
-   <div id="mp_{$mp.mp_id}" class="mp-group{if $mp.mp_read_to == 0} unread{/if}">
-      <div class="mp-item">
-         <a class="mensaje" href="{$tsConfig.url}/mensajes/leer/{$mp.mp_id}">
-            <img src="{$tsConfig.url}/files/avatar/{$mp.mp_from}_120.jpg" />
-            <div class="mp_desc">
-               <div class="mp_time">{$mp.mp_date|fecha:'d_Ms_a'}</div>
-               <div class="autor">{$mp.user_name}</div>
-               <div class="subject">{$mp.mp_subject}</div>
-               <div class="preview">{if $mp.mp_type == 1}<i class="return"></i>{/if}{$mp.mp_preview}</div>
-            </div>
-         </a>
+   <li id="mp_{$mp.mp_id}" class="{if $mp.mp_read_to == 0}bg-warning{/if}">
+      <div class="uiGrid media border-bottom border-dark position-relative pb-2">
+         <img src="{$tsConfig.url}/files/avatar/{$mp.mp_from}_120.jpg" width="60" height="60" class="align-self-start m-1" alt="{$mp.user_name}">
+         <div class="media-body pr-2">
+            <small onclick="mensaje.eliminar('{$mp.mp_id}:{$mp.mp_type}',1); return false;" class="font-weight-bolder text-danger float-right mt-1">Borrar</small>
+            <h5 class="m-0">{$mp.user_name} </h5>
+            <p class="font-weight-bold m-0 p-0"><a href="{$tsConfig.url}/mensajes/leer/{$mp.mp_id}">{$mp.mp_subject}</a> <time class="small float-right">{$mp.mp_date|date_format:"%d/%m/%Y"}</time></p>
+            <p class="small m-0 p-0"><a href="{$tsConfig.url}/mensajes/leer/{$mp.mp_id}">{$mp.mp_preview}</a></p>
+               <a href="#" class="position-absolute read" style="bottom: 3px;right: 10px;background-color:none!important;{if $mp.mp_read_to == 1}display:none{/if}" title="Marcar como le&iacute;do" onclick="mensaje.marcar('{$mp.mp_id}:{$mp.mp_type}', 0, 1, this); return false;"><i class="read lni lni-checkmark"></i></a>
+               <a href="#" class="position-absolute unread" style="bottom: 3px;right: 10px;background-color:none!important;{if $mp.mp_read_to == 0}display:none{/if}" title="Marcar como no le&iacute;do" onclick="mensaje.marcar('{$mp.mp_id}:{$mp.mp_type}', 1, 1, this); return false;"><i class="unread lni lni-close"></i></a>
+         </div>
       </div>
-      <div class="mp-item">
-         <a href="#" class="read" title="Marcar como le&iacute;do" onclick="mensaje.marcar('{$mp.mp_id}:{$mp.mp_type}', 0, 1, this); return false;" {if $mp.mp_read_to == 1}style="display:none"{/if}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0v24h24v-24h-24zm10.041 17l-4.5-4.319 1.395-1.435 3.08 2.937 7.021-7.183 1.422 1.409-8.418 8.591z"/></svg></a>
-         <a href="#" class="unread" title="Marcar como no le&iacute;do" onclick="mensaje.marcar('{$mp.mp_id}:{$mp.mp_type}', 1, 1, this); return false;" {if $mp.mp_read_to == 0}style="display:none"{/if}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 2v20h-20v-20h20zm2-2h-24v24h24v-24z"/></svg></a>
-         <a href="#" title="Eliminar" onclick="mensaje.eliminar('{$mp.mp_id}:{$mp.mp_type}',1); return false;"><svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 21h-17l-7-7.972 7-8.028h17v16zm-16.09-14l-5.252 6.023 5.247 5.977h14.095v-12h-14.09zm6.09 4.586l2.586-2.586 1.414 1.414-2.586 2.586 2.586 2.586-1.414 1.414-2.586-2.586-2.586 2.586-1.414-1.414 2.586-2.586-2.586-2.586 1.414-1.414 2.586 2.586z"/></svg></a>
-      </div>
-   </div>
+   </li>
    {/foreach}
-</div>
+</ul>
 {else}
-<div class="emptyMensajes">No hay mensajes</div>
+<div class="alert alert-warning h5 font-weight-bolder text-center">No hay mensajes</div>
 {/if}
 <div class="mpFooter">
-   <div class="actions">{if $tsAction == ''}<strong>Ver: </strong> {if $tsQT == ''}<a href="{$tsConfig.url}/mensajes/?qt=unread">No le&iacute;dos</a>{else}<a href="{$tsConfig.url}/mensajes/">Todos los mensajes</a>{/if}{/if}</div>
+   {if $tsAction == ''}
+   <div class="actions">
+      <strong>Ver: </strong> 
+      <a href="{$tsConfig.url}/mensajes/{if $tsQT == ''}?qt=unread">No le&iacute;dos{else}">Todos los mensajes{/if}</a>
+   </div>
+   {/if}
    <div class="paginador">
       {if $tsMensajes.pages.prev != 0}<div style="text-align:left" class="floatL"><a href="{$tsConfig.url}/mensajes/{if $tsAction}{$tsAction}/{/if}?page={$tsMensajes.pages.prev}{if $tsQT != ''}&qt=unread{/if}">&laquo; Anterior</a></div>{/if}
       {if $tsMensajes.pages.next != 0}<div style="text-align:right" class="floatR"><a href="{$tsConfig.url}/mensajes/{if $tsAction}{$tsAction}/{/if}?page={$tsMensajes.pages.next}{if $tsQT != ''}&qt=unread{/if}">Siguiente &raquo;</a></div>{/if}
