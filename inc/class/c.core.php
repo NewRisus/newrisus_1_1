@@ -21,7 +21,7 @@ class tsCore {
       $this->settings['css'] = $this->settings['tema']['t_url'].'/css';
 		$this->settings['js'] = $this->settings['tema']['t_url'].'/js';
       $this->settings['news'] = $this->getNews();
-		# Mensaje del instalador y pendientes de moderación #
+		# Mensaje del instalador y pendientes de moderaciÃ³n #
 		$this->settings['install'] = $this->existinstall();
 		$this->settings['novemods'] = $this->getNovemods();
 	}
@@ -93,7 +93,7 @@ class tsCore {
 		if(is_dir($upgrade_dir)) return '<div id="msg_install">Por favor, elimine la carpeta <b>upgrade</b></div>';
 	}
     
-    // FUNCIÓN CONCRETA PARA CENSURAR
+    // FUNCIÃ“N CONCRETA PARA CENSURAR
 	
 	function parseBadWords($c, $s = FALSE) {
       $q = result_array(db_exec(array(__FILE__, __LINE__), 'query', 'SELECT word, swop, method, type FROM w_badwords '.($s == true ? '' : ' WHERE type = \'0\'')));
@@ -177,7 +177,7 @@ class tsCore {
     	} elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' || !empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on') {
       	$isSecure = true;
     	}
-    	$protocol = ($isSecure ? 'https' : 'http');
+    	$protocol = ($isSecure ? 'https://' : 'http://');
 		$current_url_domain = $_SERVER['HTTP_HOST'];
 		$current_url_path = $_SERVER['REQUEST_URI'];
 		$current_url_querystring = $_SERVER['QUERY_STRING'];
@@ -371,8 +371,8 @@ class tsCore {
 		: URL AMIGABLES
 	*/
 	function setSEO($string, $max = false) {
-		// ESPAÑOL
-		$espanol = array('á','é','í','ó','ú','ñ');
+		// ESPAÃ‘OL
+		$espanol = array('Ã¡','Ã©','Ã­','Ã³','Ãº','Ã±');
 		$ingles = array('a','e','i','o','u','n');
 		// MINUS
 		$string = str_replace($espanol,$ingles,$string);
@@ -423,7 +423,7 @@ class tsCore {
                 // SMILES
                 $parser->parseSmiles();
                 break;
-            // SOLO SMILES (Esta opción se mantiene por compatibilidad con versiones anteriores, pero en su lugar se recomienda utilizar la opción "normal")
+            // SOLO SMILES (Esta opciÃ³n se mantiene por compatibilidad con versiones anteriores, pero en su lugar se recomienda utilizar la opciÃ³n "normal")
             case 'smiles':
                 $parser->setRestriction(array('url', 'code', 'quote', 'quotePHPost', 'font', 'size', 'color', 'img', 'b', 'i', 'u', 'align', 'spoiler', 'swf', 'goear', 'hr', 'li'));
                 // SMILES
@@ -441,7 +441,7 @@ class tsCore {
      * @param string
      * @return string
      * @info PONE LOS LINKS A LOS MENCIONADOS
-     * @note Esta función se ha reemplazado por $parser->parseMentions(). Se reomienda exclusivamente para compatibilidad en versiones anteriores.
+     * @note Esta funciÃ³n se ha reemplazado por $parser->parseMentions(). Se reomienda exclusivamente para compatibilidad en versiones anteriores.
      */
     public function setMenciones($html){
         # GLOBALES
@@ -570,57 +570,6 @@ class tsCore {
 	   else $ip = 'unknown';
 	   return $this->setSecure($ip);
     }
-	/*
-		Encriptador KOX
-		Encriptacion simple by JNeutron :D
-		koxEncode($tsData,$kox_1)
-	*/
-	function koxEncode($tsData,$kox_l = NULL){
-		$KOXkey = array(
-			'a' => '0','b' => 1,'c' => 2,'d' => 3,'e' => 4,'f' => 5,'g' => 6,'h' => 7,'i' => 8,'j' => 9,
-			'k' => 'z','l' => 'y','m' => 'x','n' => 'w','o' => 'v','p' => 'u','q' => 't','r' => 's',
-			's' => 'r','t' => 'q','u' => 'p','v' => 'o','w' => 'n','x' => 'm','y' => 'l','z' => 'k',
-			'0' => 'j',1 => 'i',2 => 'h',3 => 'g',4 => 'f',5 => 'e',6 => 'd',7 => 'c',8 => 'b',9 => 'a',
-			'@' => '{', '.' => '}',
-		);
-		if(!$kox_l || $kox_l > 9) $kox_l = rand(1,9);
-		$kox_n = $KOXkey[$kox_l];
-		$kox_s = strlen($tsData);
-		for($i=0;$i<$kox_s;$i++){
-			$kox_c = $tsData[$i];
-			for($j=0;$j<$kox_l;$j++){
-				if($KOXkey[$kox_c] != '') $kox_c = $KOXkey[$kox_c];
-				else $kox_c = $tsData[$i];
-			}
-			$kox_key .= $kox_c;
-		}
-		return $kox_key.$kox_n;
-	}
-	/*
-		By JNeutron
-		koxDecode($tsKey)
-	*/
-	function koxDecode($tsKey){
-		$KOXkey = array(
-			'0' => 'a',1 => 'b',2 => 'c',3 => 'd',4 => 'e',5 => 'f',6 => 'g',7 => 'h',8 => 'i',9 => 'j',
-			'z' => 'k','y' => 'l','x' => 'm','w' => 'n','v' => 'o','u' => 'p','t' => 'q','s' => 'r',
-			'r' => 's','q' => 't','p' => 'u','o' => 'v','n' => 'w','m' => 'x','l' => 'y','k' => 'z',
-			'j' => '0','i' => 1,'h' => 2,'g' => 3,'f' => 4,'e' => 5,'d' => 6,'c' => 7,'b' => 8,'a' => 9,
-			'{' => '@', '}' => '.',
-		);
-		$kox_s = strlen($tsKey);
-		$kox_l = $tsKey[$kox_s-1];
-		$kox_n = $KOXkey[$kox_l];
-		for($i=0;$i<$kox_s-1;$i++){
-			$kox_c = $tsKey[$i];
-			for($j=$kox_n;$j>0;$j--){
-				if($KOXkey[$kox_c] != '') $kox_c = $KOXkey[$kox_c];
-				else $kox_c = $kox_c;
-			}
-			$kox_txt .= $kox_c;
-		}
-		return $kox_txt;
-	}
 	/* 
 		getIUP()
 	*/
